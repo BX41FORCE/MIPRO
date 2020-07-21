@@ -22,5 +22,6 @@ export class MapaComponent implements OnInit {
       zoom: 5.71,
       center: [this.lng, this.lat]
     });
+    this.map.addControl(new mapboxgl.NavigationControl());
   }
 }
