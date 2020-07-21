@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-sm">
+    <a id="yavLogo" class="navbar-brand" [routerLink]="['inicio']"><i class="fas fa-leaf"></i> Inteligencia
+        Productiva</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li id="yav" class="nav-item active" hidden>
+                <a class="nav-link" [routerLink]="['registro']">Registrate! <span class="sr-only">(current)</span></a>
+            </li>
+            <li id="yav" class="nav-item active">
+                <a class="nav-link" [routerLink]="['crear_noticia']"><i class="fas fa-newspaper"></i> Opción 1 <span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li id="yav" class="nav-item active">
+                <a class="nav-link" [routerLink]="['crear_evento']"><i class="fas fa-calendar-day"></i> Opción 2 <span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li id="yav" class="nav-item active">
+                <a class="nav-link" [routerLink]="['productos']"><i class="fas fa-cart-plus"></i> Opción 3<span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <!--
+            <li id="yav" class="nav-item active">
+                <a class="nav-link" [routerLink]="['lista']"><i class="fas fa-list"></i> Lista de Productos<span class="sr-only">(current)</span></a>
+            </li>
+            <li id="yav" class="nav-item active" >
+                <a class="nav-link" (click)="salir()"><i class="fas fa-sign-out-alt"></i> Salir<span class="sr-only">(current)</span></a>
+            </li>
+            <li id="yav" class="nav-item active" hidden>
+                <a class="nav-link" [routerLink]="['test']">TEST<span class="sr-only">(current)</span></a>
+            </li>-->
+        </ul>
+    </div>
+</nav>

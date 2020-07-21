@@ -1,0 +1,15 @@
+nav {
+    color: black;
+    background-color: #193b68;
+    /*"#7BDB52" verde claro*/
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    background-color: #3893e6;
+    color: #ffffff;
+    border-radius: 6px;
+}
