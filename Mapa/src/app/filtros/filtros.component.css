@@ -4,8 +4,7 @@
 }
 
 #sidebar.active {
-    width: 100%;
-    margin-left: -250px;
+    margin-left: -180px;
 }
 
 a[data-toggle="collapse"] {
@@ -21,7 +20,7 @@ a[data-toggle="collapse"] {
     transform: translateY(-50%);
 }
 */
-/*
+
 @media (max-width: 768px) {
     #sidebar {
         margin-left: -250px;
@@ -29,7 +28,7 @@ a[data-toggle="collapse"] {
     #sidebar.active {
         margin-left: 0;
     }
-}*/
+}
 
 /*
     Estilo Adicional Barra Lateral
