@@ -3,9 +3,8 @@
     align-items: stretch;
 }
 
-
-
 #sidebar.active {
+    width: 100%;
     margin-left: -250px;
 }
 
@@ -13,6 +12,7 @@ a[data-toggle="collapse"] {
     position: relative;
 }
 
+/*
 .dropdown-toggle::after {
     display: block;
     position: absolute;
@@ -20,7 +20,8 @@ a[data-toggle="collapse"] {
     right: 20px;
     transform: translateY(-50%);
 }
-
+*/
+/*
 @media (max-width: 768px) {
     #sidebar {
         margin-left: -250px;
@@ -28,14 +29,13 @@ a[data-toggle="collapse"] {
     #sidebar.active {
         margin-left: 0;
     }
-}
+}*/
 
 /*
     Estilo Adicional Barra Lateral
 */
+
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-
-
 body {
     font-family: 'Poppins', sans-serif;
     background: #fafafa;
@@ -56,8 +56,8 @@ a, a:hover, a:focus {
 }
 
 #sidebar {
-    min-width: 250px;
-    max-width: 250px;
+    min-width: 170px;
+    max-width: 170px;
     min-height: 100vh;
     background-color: #193b68;
     color: #fff;
@@ -66,7 +66,16 @@ a, a:hover, a:focus {
 
 #sidebar .sidebar-header {
     padding: 20px;
+    text-align: center;
     background-color: #193b68;
+}
+
+#nombre_filtro {
+    margin-left: 15px;
+}
+
+#sidebar .dropdown {
+    margin-left: 15px;
 }
 
 #sidebar ul.components {
@@ -84,15 +93,17 @@ a, a:hover, a:focus {
     font-size: 1.1em;
     display: block;
 }
+
 #sidebar ul li a:hover {
     color: #193b68;
     background: #fff;
 }
 
-#sidebar ul li.active > a, a[aria-expanded="true"] {
+#sidebar ul li.active>a, a[aria-expanded="true"] {
     color: #fff;
     background: #193b68;
 }
+
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;

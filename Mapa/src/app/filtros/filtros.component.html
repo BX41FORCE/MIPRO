@@ -1,83 +1,83 @@
 <div class="wrapper">
     <!--Sidebar-->
     <nav id="sidebar">
-            <div class="sidebar-header">
-                <h3>Barra Lateral de Filtros</h3>
+        <div class="sidebar-header">
+            <h3>Filtros</h3>
+        </div>
+        <div>
+            <label id="nombre_filtro" class="black lselect2">Nivel 1:</label>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Seleccionar
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Sector Agroindustrial</button>
+                <button class="dropdown-item" type="button">Sector Textil</button>
+                <button class="dropdown-item" type="button">Eventos de Intercambio Comercial</button>
             </div>
-            
+        </div>
+        <div>
+            <label id="nombre_filtro" class="black lselect2">Nivel 2:</label>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Seleccionar
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Concentración de Empresas Agroindustriales</button>
+                <button class="dropdown-item" type="button">Sector de Aduanas</button>
+                <button class="dropdown-item" type="button">Empresas Agrícolas</button>
+            </div>
+        </div>
+        <div>
+            <label id="nombre_filtro" class="black lselect2">Nivel 3:</label>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Seleccionar
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Empresas</button>
+                <button class="dropdown-item" type="button">Industrias</button>
+                <button class="dropdown-item" type="button">Microempresas</button>
+            </div>
+        </div>
+        <br>
+        <div>
+            <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"
+                style="margin-left: 15px;">Consultar</a>
+        </div>
 
-                <div>
-                        <label id="system-select-title-1" class="black lselect2">Nivel 1:</label>
-                </div>
-                    <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Seleccionar
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                              <button class="dropdown-item" type="button">Sector Agroindustrial</button>
-                              <button class="dropdown-item" type="button">Sector Textil</button>
-                              <button class="dropdown-item" type="button">Eventos de Intercambio Comercial</button>
-                            </div>
-                    </div>
-                    <div>
-                        <label id="system-select-title-1" class="black lselect2">Nivel 2:</label>
-                    </div>
-                    <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Seleccionar
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                              <button class="dropdown-item" type="button">Concentración de Empresas Agroindustriales</button>
-                              <button class="dropdown-item" type="button">Sector de Aduanas</button>
-                              <button class="dropdown-item" type="button">Empresas Agrícolas</button>
-                            </div>
-                    </div>
-                    <div>
-                        <label id="system-select-title-1" class="black lselect2">Nivel 3:</label>
-                    </div>
-                    <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Seleccionar
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                              <button class="dropdown-item" type="button">Empresas</button>
-                              <button class="dropdown-item" type="button">Industrias</button>
-                              <button class="dropdown-item" type="button">Microempresas</button>
-                            </div>
-                    </div>
-                          <br>
-                          <div>
-                            <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Consultar</a>
-                         </div>
-                        
     </nav>
 
     <div id="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <button type="button" id="sidebarCollapse" class="btn btn-info"
+                    style="margin-left: 50px; margin-right: 20px;">
+                    <i class="fas fa-align-left"></i>
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
+                </button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fas fa-align-justify"></i>
+                </button>
 
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        
-                    </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <h2>Mapa de Inteligencia Productiva - Ministerio de Producción y Comercio</h2>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <h2>Mapa de Inteligencia Productiva - Ministerio de Producción y Comercio</h2>
-
-                    </div>
                 </div>
-            </nav>
-            
-            <div>
-                    <app-mapa></app-mapa>
             </div>
+        </nav>
+        <div >
+            <app-mapa></app-mapa>
+        </div>
     </div>
-    
-
 </div>
 
 
