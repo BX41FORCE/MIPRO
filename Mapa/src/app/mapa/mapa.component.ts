@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../environments/environment';
 import * as mapboxgl from 'mapbox-gl';
+
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.component.html',
@@ -14,16 +15,74 @@ export class MapaComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
     (mapboxgl as any).accessToken = environment.mapbox.accessToken;
-     var map = new mapboxgl.Map({
+    var map = new mapboxgl.Map({
       container: 'map',
       style: this.style,
       zoom: 5.71,
       center: [this.lng, this.lat]
     });
+
     map.addControl(new mapboxgl.NavigationControl());
-    var museums = {
+
+    var hoveredStateId = null;
+
+    map.on('load', function () {
+      map.addSource('states', {
+        'type': 'geojson',
+        'data':
+          '../../assets/data/provincias.geojson'
+      });
+
+      // The feature-state dependent fill-opacity expression will render the hover effect
+      // when a feature's hover state is set to true.
+      map.addLayer({
+        'id': 'state-fills',
+        'type': 'fill',
+        'source': 'states',
+        'layout': {},
+        'paint': {
+          'fill-color': '#193b68',
+          'fill-opacity': [
+            'case',
+            ['boolean', ['feature-state', 'hover'], false],
+            1,
+            0.5
+          ]
+        }
+      });
+
+      map.addLayer({
+        'id': 'state-borders',
+        'type': 'line',
+        'source': 'states',
+        'layout': {},
+        'paint': {
+          'line-color': '#627BC1',
+          'line-width': 2
+        }
+      });
+
+      // When the user moves their mouse over the state-fill layer, we'll update the
+      // feature state for the feature under the mouse.
+      map.on('mousemove', 'state-fills', function (e) {
+        if (e.features.length > 0) {
+          if (hoveredStateId) {
+            map.setFeatureState(
+              { source: 'states', id: hoveredStateId },
+              { hover: false }
+            );
+          }
+          hoveredStateId = e.features[0].id;
+          map.setFeatureState(
+            { source: 'states', id: hoveredStateId },
+            { hover: true }
+          );
+        }
+      });
+    });
+
+      var museums = {
       type: 'FeatureCollection',
       features: [
         { type: 'Feature', properties: { Name: 'Museo de la Ciudad', Address: '2250 Leestown Rd' }, geometry: { type: 'Point', coordinates: [-78.514997, -0.222806] } },
@@ -34,17 +93,6 @@ export class MapaComponent implements OnInit {
         { type: 'Feature', properties: { Name: 'Museo de Arte Precolombino Casa de Alabado', Address: '627 W Fourth St' }, geometry: { type: 'Point', coordinates: [-78.515808, -0.221240] } },
         { type: 'Feature', properties: { Name: 'Museo Manuela Sáenz', Address: '2050 Versailles Rd' }, geometry: { type: 'Point', coordinates: [-78.510471, -0.222699] } },
         { type: 'Feature', properties: { Name: 'Museo Archivo de Arquitectura Ecuatoriana', ADDRESS: '1 St Joseph Dr' }, geometry: { type: 'Point', coordinates: [-78.509530, -0.223225] } }
-      ]
-    };
-    var libraries = {
-      type: 'FeatureCollection',
-      features: [
-        { type: 'Feature', properties: { Name: 'Village Branch', Address: '2185 Versailles Rd' }, geometry: { type: 'Point', coordinates: [-84.548369, 38.047876] } },
-        { type: 'Feature', properties: { Name: 'Northside Branch', ADDRESS: '1733 Russell Cave Rd' }, geometry: { type: 'Point', coordinates: [-84.47135, 38.079734] } },
-        { type: 'Feature', properties: { Name: 'Central Library', ADDRESS: '140 E Main St' }, geometry: { type: 'Point', coordinates: [-84.496894, 38.045459] } },
-        { type: 'Feature', properties: { Name: 'Beaumont Branch', Address: '3080 Fieldstone Way' }, geometry: { type: 'Point', coordinates: [-84.557948, 38.012502] } },
-        { type: 'Feature', properties: { Name: 'Tates Creek Branch', Address: '3628 Walden Dr' }, geometry: { type: 'Point', coordinates: [-84.498679, 37.979598] } },
-        { type: 'Feature', properties: { Name: 'Eagle Creek Branch', Address: '101 N Eagle Creek Dr' }, geometry: { type: 'Point', coordinates: [-84.442219, 37.999437] } }
       ]
     };
 
@@ -62,23 +110,11 @@ export class MapaComponent implements OnInit {
         },
         paint: {}
       });
-      map.addLayer({
-        id: 'libraries',
-        type: 'symbol',
-        source: {
-          type: 'geojson',
-          data: libraries
-        },
-        layout: {
-          'icon-image': 'library-15'
-        },
-        paint: {}
-      });
     });
     var popup = new mapboxgl.Popup();
 
     map.on('mousemove', function (e) {
-      var features = map.queryRenderedFeatures(e.point, { layers: ['museums', 'libraries'] });
+      var features = map.queryRenderedFeatures(e.point, { layers: ['museums'] });
       if (!features.length) {
         popup.remove();
         return;
