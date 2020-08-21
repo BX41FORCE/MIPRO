@@ -1,7 +1,7 @@
-const knex = require('./knex');
+const knex =require('./knex');
 
-module.exports = {
-    getAll() {
-        return knex.select().table('mercados');
+module.exports ={
+    getAll(){
+        return knex('mercados');
     }
 }

@@ -1,15 +1,15 @@
 // Update with your config settings.
 
 module.exports = {
-  
-    development: {
-      client: 'pg',
-      connection: {
-        database: 'MiproData',
-        user: 'postgres',
-        password: '12345'
-      }
+
+  development: {
+    client: 'pg',
+    connection: {
+      database: 'MiproData',
+      user: 'postgres',
+      password: '12345'
     }
+  }
   /*
   development: {
     client: 'sqlite3',
@@ -17,7 +17,7 @@ module.exports = {
       filename: './dev.sqlite3'
     }
   },
-
+  
   staging: {
     client: 'postgresql',
     connection: {
@@ -33,7 +33,7 @@ module.exports = {
       tableName: 'knex_migrations'
     }
   },
-
+  
   production: {
     client: 'postgresql',
     connection: {
