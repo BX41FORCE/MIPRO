@@ -1,5 +1,8 @@
 <div id="map"></div>
 <div class="calculation-box">
     <p>Cálculo Poligonal</p>
+    <ul>
+        <li *ngFor="let dato of datos">{{dato.id}}) {{dato.name}}  {{dato.email}}</li>
+    </ul>
     <div id="calculated-area"></div>
 </div>

@@ -10,4 +10,5 @@ export class UsuarioService {
   getJson(url: string) {
     return this.http.get(url);
   }
+  
 }

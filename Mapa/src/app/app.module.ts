@@ -9,6 +9,10 @@ import { FooterComponent } from './footer/footer.component';
 import { FiltrosComponent } from './filtros/filtros.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { UsuarioService } from './services/usuario.service';
+import { FormsModule } from '@angular/forms'; 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,9 +24,10 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [UsuarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

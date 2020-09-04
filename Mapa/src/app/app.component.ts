@@ -7,9 +7,8 @@ import { UsuarioService } from './services/usuario.service';
 })
 export class AppComponent {
   title = 'Mapa';
+  datos;
   constructor(public json: UsuarioService) {
-    this.json.getJson('http://localhost:3000/api/users').subscribe((res: any) => {
-      console.log(res);
-    });
+    this.json.getJson('http://localhost:3000/api/users').subscribe(responseDato => this.datos = responseDato);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../environments/environment';
 import * as mapboxgl from 'mapbox-gl';
+import { UsuarioService } from '../services/usuario.service';
 
 @Component({
   selector: 'app-mapa',
@@ -12,9 +13,13 @@ export class MapaComponent implements OnInit {
   style = 'mapbox://styles/bx41force/ck7m2bd88j2341iqho0jblnpz';
   lat = -1.720;
   lng = -79.666;
-  constructor() { }
+  datos;
+  constructor(public json: UsuarioService) {
+    this.json.getJson('http://localhost:3000/api/users').subscribe(responseDato => this.datos = responseDato);
+   }
 
   ngOnInit(): void {
+    
     (mapboxgl as any).accessToken = environment.mapbox.accessToken;
     var map = new mapboxgl.Map({
       container: 'map',

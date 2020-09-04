@@ -5,7 +5,7 @@
 }
 
 .calculation-box {
-    height: 75px;
+    height: 150px;
     width: 150px;
     position: absolute;
     bottom: 40px;
@@ -16,6 +16,18 @@
 }
 
 p {
+    font-family: 'Open Sans';
+    margin: 0;
+    font-size: 13px;
+}
+
+ul{
+    font-family: 'Open Sans';
+    margin: 0;
+    font-size: 13px; 
+}
+
+li{
     font-family: 'Open Sans';
     margin: 0;
     font-size: 13px;
