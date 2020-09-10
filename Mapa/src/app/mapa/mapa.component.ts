@@ -15,40 +15,31 @@ export class MapaComponent implements OnInit {
   style = 'mapbox://styles/bx41force/ck7m2bd88j2341iqho0jblnpz';
   lat = -1.720;
   lng = -79.666;
-  mercados: any = [];
+  mercados = [];
   constructor(private json: UsuarioService, private mercadoService: MercadoService) {
+    this.verMercados();
   }
-  verMercados1() {
-    // this.json.getJson('http://localhost:3000/api/users').subscribe(responseDato => this.datos = responseDato);
-    this.json.getJson('http://localhost:3000/api/mercados/get').subscribe((res: any) => {
-      this.mercados = res;
-      console.log(this.mercados[0]);
-    });
+  ngOnInit(): any {
+
   }
   verMercados() {
     this.mercadoService.getAllMercados().then(respuesta => {
       this.mercados = respuesta;
       console.log(this.mercados);
+      (mapboxgl as any).accessToken = environment.mapbox.accessToken;
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: this.style,
+        zoom: 5.71,
+        center: [this.lng, this.lat]
+      });
+      map.addControl(new mapboxgl.NavigationControl());
+      this.cargarMapa(map, respuesta);
     }).catch(error => {
       console.log('Aun no hay datos!', 'Oops algo ha salido mal!');
     });
   }
-  ngOnInit(): void {
-    (mapboxgl as any).accessToken = environment.mapbox.accessToken;
-    var map = new mapboxgl.Map({
-      container: 'map',
-      style: this.style,
-      zoom: 5.71,
-      center: [this.lng, this.lat]
-    });
-    map.addControl(new mapboxgl.NavigationControl());
-    this.verMercados();
-    //this.verMercados1();
-    //console.log(this.mercados.length);
-    this.cargarMapa(map);
-  }
-
-  cargarMapa(map) {
+  cargarMapa(map, datos) {
     /*
          var hoveredStateId = null;
      
@@ -107,22 +98,15 @@ export class MapaComponent implements OnInit {
            });
          });
      */
-    /*for (var i = 0; i == this.mercados.length; i++) {
-      alert(this.mercados.length);
-      alert('hola');
-    }*/
+    var cadena = [];
+
+    datos.forEach(element => {
+      cadena.push({ type: 'Feature', properties: { Name: element.nombre }, geometry: { type: 'Point', coordinates: [element.longitud, element.latitud] } });
+    });
+
     var mercados = {
       type: 'FeatureCollection',
-      features: [
-        { type: 'Feature', properties: { Name: 'Museo de la Ciudad', Address: '2250 Leestown Rd' }, geometry: { type: 'Point', coordinates: [-78.514997, -0.222806] } },
-        /*{ type: 'Feature', properties: { Name: 'Museo del Carmen Alto', Address: '150 N Eagle Creek Dr' }, geometry: { type: 'Point', coordinates: [-78.515170, -0.222760] } },
-        { type: 'Feature', properties: { Name: 'Museo Casa de Sucre', Address: '1740 Nicholasville Rd' }, geometry: { type: 'Point', coordinates: [-78.513209, -0.221853] } },
-        { type: 'Feature', properties: { Name: 'Museo del Pasillo', Address: '1101 Veterans Dr' }, geometry: { type: 'Point', coordinates: [-78.514189, -0.221927] } },
-        { type: 'Feature', properties: { Name: 'Museo Numismático Banco Central del Ecuador', Address: '1900 Richmond Rd' }, geometry: { type: 'Point', coordinates: [-78.513861, -0.221174] } },
-        { type: 'Feature', properties: { Name: 'Museo de Arte Precolombino Casa de Alabado', Address: '627 W Fourth St' }, geometry: { type: 'Point', coordinates: [-78.515808, -0.221240] } },
-        { type: 'Feature', properties: { Name: 'Museo Manuela Sáenz', Address: '2050 Versailles Rd' }, geometry: { type: 'Point', coordinates: [-78.510471, -0.222699] } },
-        { type: 'Feature', properties: { Name: 'Museo Archivo de Arquitectura Ecuatoriana', ADDRESS: '1 St Joseph Dr' }, geometry: { type: 'Point', coordinates: [-78.509530, -0.223225] } }*/
-      ]
+      features: [cadena[0],cadena[1],cadena[2]/*cadena.slice(0)*/]
     };
 
     map.on('load', function () {
@@ -134,7 +118,7 @@ export class MapaComponent implements OnInit {
           data: mercados
         },
         layout: {
-          'icon-image': 'museum-15',
+          'icon-image': 'convenience-15',
           'icon-allow-overlap': true
         },
         paint: {}
