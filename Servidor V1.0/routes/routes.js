@@ -3,10 +3,10 @@ const app = express()
 const db = require('../api/queries')
 
 
-app.get('/users', db.getUsers)
-app.get('/users/:id', db.getUserById)
-app.post('/users', db.createUser)
-app.put('/users/:id', db.updateUser)
-app.delete('/users/:id', db.deleteUser)
+app.get('/mercados/get', db.getMercados)
+app.get('/mercados/get/:id', db.getMercadoById)
+app.post('/mercados/post', db.createMercado)
+app.put('/mercados/put/:id', db.updateMercado)
+app.delete('/mercados/del/:id', db.deleteMercado)
 
 module.exports = app;

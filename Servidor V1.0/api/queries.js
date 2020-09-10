@@ -1,62 +1,62 @@
 const pool = require ('../database/db');
 
-const getUsers = (request, response) => {
-    pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
+const getMercados = (request, response) => {
+    pool.query('SELECT * FROM mercados ORDER BY id_mercado ASC', (error, results) => {
         if (error) {
             throw error
         }
         response.status(200).json(results.rows)
     })
 }
-const getUserById = (request, response) => {
+const getMercadoById = (request, response) => {
     const id = parseInt(request.params.id)
 
-    pool.query('SELECT * FROM users WHERE id = $1', [id], (error, results) => {
+    pool.query('SELECT * FROM mercados WHERE id_mercado = $1', [id], (error, results) => {
         if (error) {
             throw error
         }
         response.status(200).json(results.rows)
     })
 }
-const createUser = (request, response) => {
-    const { name, email } = request.body
+const createMercado = (request, response) => {
+    const { nombre, longitud, latitud } = request.body
 
-    pool.query('INSERT INTO users (name, email) VALUES ($1, $2)', [name, email], (error, results) => {
+    pool.query('INSERT INTO mercados (nombre,longitud,latitud) VALUES ($1, $2, $3)', [nombre,longitud,latitud], (error, results) => {
         if (error) {
             throw error
         }
-        response.status(201).send(`User added with ID: ${result.insertId}`)
+        response.status(201).send(`Mercado ingresado con ID: ${result.insertId}`)
     })
 }
-const updateUser = (request, response) => {
+const updateMercado = (request, response) => {
     const id = parseInt(request.params.id)
-    const { name, email } = request.body
+    const { nombre,longitud,latitud } = request.body
 
     pool.query(
-        'UPDATE users SET name = $1, email = $2 WHERE id = $3',
-        [name, email, id],
+        'UPDATE users SET nombre = $1, longitud = $2,latitud = $3 WHERE id_mercado = $4',
+        [nombre, longitud,latitud, id],
         (error, results) => {
             if (error) {
                 throw error
             }
-            response.status(200).send(`User modified with ID: ${id}`)
+            response.status(200).send(`Mercado modificado con ID: ${id}`)
         }
     )
 }
-const deleteUser = (request, response) => {
+const deleteMercado = (request, response) => {
     const id = parseInt(request.params.id)
 
-    pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => {
+    pool.query('DELETE FROM mercados WHERE id_mercado = $1', [id], (error, results) => {
         if (error) {
             throw error
         }
-        response.status(200).send(`User deleted with ID: ${id}`)
+        response.status(200).send(`Mercado eliminado con ID: ${id}`)
     })
 }
 module.exports = {
-    getUsers,
-    getUserById,
-    createUser,
-    updateUser,
-    deleteUser,
+    getMercados,
+    getMercadoById,
+    createMercado,
+    updateMercado,
+    deleteMercado,
 }
