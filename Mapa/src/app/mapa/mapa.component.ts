@@ -107,6 +107,7 @@ export class MapaComponent implements OnInit {
       type: 'FeatureCollection',
       features: [] = cadena
     };
+
     map.on('load', function () {
       map.addLayer({
         id: 'mercados',
@@ -119,7 +120,8 @@ export class MapaComponent implements OnInit {
           'icon-image': 'convenience-15',
           'icon-allow-overlap': true
         },
-        paint: {}
+        paint: {
+        }
       });
     });
     var popup = new mapboxgl.Popup();
