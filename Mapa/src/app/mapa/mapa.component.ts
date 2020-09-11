@@ -99,16 +99,14 @@ export class MapaComponent implements OnInit {
          });
      */
     var cadena = [];
-
     datos.forEach(element => {
-      cadena.push({ type: 'Feature', properties: { Name: element.nombre }, geometry: { type: 'Point', coordinates: [element.longitud, element.latitud] } });
+      cadena.push({ type: 'Feature', properties: { Name: element.nombre }, geometry: { type: 'Point', coordinates: [element.longitud, element.latitud] } },);
     });
 
     var mercados = {
       type: 'FeatureCollection',
-      features: [cadena[0],cadena[1],cadena[2]/*cadena.slice(0)*/]
+      features: [] = cadena
     };
-
     map.on('load', function () {
       map.addLayer({
         id: 'mercados',
