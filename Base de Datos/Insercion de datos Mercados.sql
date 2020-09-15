@@ -1,4 +1,7 @@
-insert into mercados(nombre, longitud, latitud) values ('Mercado La Luz','-78.4782704','-0.1482046'),
+insert into mercados(nombre, longitud, latitud) values ('Mercado Municipal de La Kennedy','-78.4777946','-0.1393178'),
+('Mercado Bellavista','-78.4713352','-0.1898899'),
+('Mercado de Puengasí','-78.4940998','-0.2450032'),
+('Mercado La Luz','-78.4782704','-0.1482046'),
 ('Mercado Municipal "La Rumiñahui','-78.4861554','-0.1274349'),
 ('Mercado la bota','-78.4579433','-0.1166636'),
 ('Mercado El Arenal','-78.3765788', '-0.2050796'),

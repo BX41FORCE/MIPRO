@@ -40,64 +40,6 @@ export class MapaComponent implements OnInit {
     });
   }
   cargarMapa(map, datos) {
-    /*
-         var hoveredStateId = null;
-     
-         map.on('load', function () {
-           map.addSource('states', {
-             'type': 'geojson',
-             'data':
-               '../../assets/data/provincias.geojson'
-           });
-     
-           // The feature-state dependent fill-opacity expression will render the hover effect
-           // when a feature's hover state is set to true.
-           map.addLayer({
-             'id': 'state-fills',
-             'type': 'fill',
-             'source': 'states',
-             'layout': {},
-             'paint': {
-               'fill-color': '#193b68',
-               'fill-opacity': [
-                 'case',
-                 ['boolean', ['feature-state', 'hover'], false],
-                 1,
-                 0.5
-               ]
-             }
-           });
-     
-           map.addLayer({
-             'id': 'state-borders',
-             'type': 'line',
-             'source': 'states',
-             'layout': {},
-             'paint': {
-               'line-color': '#627BC1',
-               'line-width': 2
-             }
-           });
-     
-           // When the user moves their mouse over the state-fill layer, we'll update the
-           // feature state for the feature under the mouse.
-           map.on('mousemove', 'state-fills', function (e) {
-             if (e.features.length > 0) {
-               if (hoveredStateId) {
-                 map.setFeatureState(
-                   { source: 'states', id: hoveredStateId },
-                   { hover: false }
-                 );
-               }
-               hoveredStateId = e.features[0].id;
-               map.setFeatureState(
-                 { source: 'states', id: hoveredStateId },
-                 { hover: true }
-               );
-             }
-           });
-         });
-     */
     var cadena = [];
     datos.forEach(element => {
       cadena.push({ type: 'Feature', properties: { Name: element.nombre }, geometry: { type: 'Point', coordinates: [element.longitud, element.latitud] } },);
