@@ -33,7 +33,7 @@ const updateMercado = (request, response) => {
     const { nombre,longitud,latitud } = request.body
 
     pool.query(
-        'UPDATE users SET nombre = $1, longitud = $2,latitud = $3 WHERE id_mercado = $4',
+        'UPDATE mercados SET nombre = $1, longitud = $2,latitud = $3 WHERE id_mercado = $4',
         [nombre, longitud,latitud, id],
         (error, results) => {
             if (error) {
