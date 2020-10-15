@@ -4,6 +4,7 @@ import * as mapboxgl from 'mapbox-gl';
 import { UsuarioService } from '../services/usuario.service';
 import { Mercados } from '../models/mercado';
 import { MercadoService } from '../services/mercado.service';
+import { HotelService } from '../services/hotel.service';
 
 @Component({
   selector: 'app-mapa',
@@ -16,12 +17,24 @@ export class MapaComponent implements OnInit {
   lat = -1.720;
   lng = -79.666;
   mercados = [];
-  constructor(private json: UsuarioService, private mercadoService: MercadoService) {
+  hoteles = [];
+  constructor(private json: UsuarioService, private mercadoService: MercadoService, private hotelService: HotelService) {
     this.verMercados();
+    this.verHoteles();
   }
   ngOnInit(): any {
 
   }
+
+  verHoteles() {
+    this.hotelService.getAllHoteles().then(respuesta => {
+      this.hoteles = respuesta;
+      console.log(this.hoteles);
+    }).catch(error => {
+      console.log('Aun no hay datos!', 'Oops algo ha salido mal!');
+    });
+  }
+
   verMercados() {
     this.mercadoService.getAllMercados().then(respuesta => {
       this.mercados = respuesta;
