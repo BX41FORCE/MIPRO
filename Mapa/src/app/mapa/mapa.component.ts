@@ -107,13 +107,13 @@ export class MapaComponent implements OnInit {
         case "1 Estrella":
           icono = "hotel-1"
           break;
-          case "2 Estrellas":
+        case "2 Estrellas":
           icono = "hotel-2"
           break;
-          case "3 Estrellas":
+        case "3 Estrellas":
           icono = "hotel-3"
           break;
-          case "4 Estrellas":
+        case "4 Estrellas":
           icono = "hotel-4"
           break;
         case "5 Estrellas":
@@ -129,30 +129,31 @@ export class MapaComponent implements OnInit {
             "<div id='hotel_popup'>" +
             "<p>Nombre: </strong>" + "</p>" +
             "<p><strong>" + element.nombre + "</strong></p>" +
-            "<p>Categoría: " + "<strong>" + element.categoria + "</strong>" + "</p>" +
+            "<p>Categoría:</p>" +
+            "<p><strong>" + element.categoria + "</strong></p>"+
             "<p style='color:#3893e6;'><strong>VALOR MENSUAL GASTADOS EN:</strong></p>" +
             "<p>Preparados conservas de pescado y de otras especies acuáticas</p>" +
-            "<p><strong>$" + element.preparados_conservas_de_pescado_y_de_otras_especies_acuaticas + "</strong></p>" +
+            "<p><strong>$ " + element.preparados_conservas_de_pescado_y_de_otras_especies_acuaticas + "</strong></p>" +
             "<p>Pescado y otros productos acuaticos elaborados</p>" +
-            "<p><strong>$" + element.pescado_y_otros_productos_acuaticos_elaborados + "</strong></p>" +
+            "<p><strong>$ " + element.pescado_y_otros_productos_acuaticos_elaborados + "</strong></p>" +
             "<p>Carne productos de carne subproductos</p>" +
-            "<p><strong>$" + element.carne_productos_de_carne_subproductos + "</strong></p>" +
+            "<p><strong>$ " + element.carne_productos_de_carne_subproductos + "</strong></p>" +
             "<p>Tuberculos vegetales y frutas</p>" +
-            "<p><strong>$" + element.tuberculos_vegetales_melones_y_frutas + "</strong></p>" +
+            "<p><strong>$ " + element.tuberculos_vegetales_melones_y_frutas + "</strong></p>" +
             "<p>Productos de panaderia</p>" +
-            "<p><strong>$" + element.productos_de_panaderia + "</strong></p>" +
+            "<p><strong>$ " + element.productos_de_panaderia + "</strong></p>" +
             "<p>Bebidas alcoholicas</p>" +
-            "<p><strong>$" + element.bebidas_alcoholicas + "</strong></p>" +
+            "<p><strong>$ " + element.bebidas_alcoholicas + "</strong></p>" +
             "<p>Flores y capullos</p>" +
-            "<p><strong>$" + element.flores_y_capullos + "</strong></p>" +
+            "<p><strong>$ " + element.flores_y_capullos + "</strong></p>" +
             "<p>Fideos macarrones y otros productos farinaceos similares</p>" +
-            "<p><strong>$" + element.fideos_macarrones_y_otros_productos_farinaceos_similares + "</strong></p>" +
+            "<p><strong>$ " + element.fideos_macarrones_y_otros_productos_farinaceos_similares + "</strong></p>" +
             "<p>Productos lacteos elaborados</p>" +
-            "<p><strong>$" + element.productos_lacteos_elaborados + "</strong></p>" +
+            "<p><strong>$ " + element.productos_lacteos_elaborados + "</strong></p>" +
             "<p>Cacao elaborado chocolate y productos de confiteria</p>" +
-            "<p><strong>$" + element.cacao_elaborado_chocolate_y_productos_de_confiteria + "</strong></p>" +
+            "<p><strong>$ " + element.cacao_elaborado_chocolate_y_productos_de_confiteria + "</strong></p>" +
             "<p>Productos de café elaborado</p>" +
-            "<p><strong>$" + element.productos_de_cafe_elaborado + "</strong></p>"
+            "<p><strong>$ " + element.productos_de_cafe_elaborado + "</strong></p>"
             + "</div>",
           icon: icono
         }, geometry: { type: 'Point', coordinates: [element.longitud, element.latitud] }
@@ -171,36 +172,36 @@ export class MapaComponent implements OnInit {
           if (error) throw error;
           map.addImage('hotel-1', image);
         });
-        map.loadImage(
-          '../../assets/hotel_icon/2 Estrellas.png',
-          function (error, image) {
-            if (error) throw error;
-            map.addImage('hotel-2', image);
-          });
-        map.loadImage(
-          '../../assets/hotel_icon/3 Estrellas.png',
-          function (error, image) {
-            if (error) throw error;
-            map.addImage('hotel-3', image);
-          });
-        map.loadImage(
-          '../../assets/hotel_icon/4 Estrellas.png',
-          function (error, image) {
-            if (error) throw error;
-            map.addImage('hotel-4', image);
-          });
-        map.loadImage(
-          '../../assets/hotel_icon/5 Estrellas.png',
-          function (error, image) {
-            if (error) throw error;
-            map.addImage('hotel-5', image);
-          });
-          map.loadImage(
-            '../../assets/hotel_icon/residencia.png',
-            function (error, image) {
-              if (error) throw error;
-              map.addImage('residencia', image);
-            });
+      map.loadImage(
+        '../../assets/hotel_icon/2 Estrellas.png',
+        function (error, image) {
+          if (error) throw error;
+          map.addImage('hotel-2', image);
+        });
+      map.loadImage(
+        '../../assets/hotel_icon/3 Estrellas.png',
+        function (error, image) {
+          if (error) throw error;
+          map.addImage('hotel-3', image);
+        });
+      map.loadImage(
+        '../../assets/hotel_icon/4 Estrellas.png',
+        function (error, image) {
+          if (error) throw error;
+          map.addImage('hotel-4', image);
+        });
+      map.loadImage(
+        '../../assets/hotel_icon/5 Estrellas.png',
+        function (error, image) {
+          if (error) throw error;
+          map.addImage('hotel-5', image);
+        });
+      map.loadImage(
+        '../../assets/hotel_icon/residencia.png',
+        function (error, image) {
+          if (error) throw error;
+          map.addImage('residencia', image);
+        });
       map.addLayer({
         id: 'hoteles',
         type: 'symbol',
