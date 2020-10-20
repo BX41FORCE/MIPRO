@@ -1,7 +1,8 @@
 CREATE TABLE hoteles (
 	id_hotel SERIAL NOT NULL,
 	nombre VARCHAR(100),
-	the_geom VARCHAR (100),
+	longitud VARCHAR (20),
+	latitud VARCHAR (20),
 	provincia VARCHAR (50),
 	canton VARCHAR (50),
 	parroquia VARCHAR (50),
