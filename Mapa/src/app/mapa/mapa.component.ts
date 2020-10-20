@@ -102,14 +102,35 @@ export class MapaComponent implements OnInit {
   cargarHotelesEnMapa(map, datos) {
     var cadena = [];
     datos.forEach(element => {
+      var icono = "";
+      switch (element.categoria) {
+        case "1 Estrella":
+          icono = "hotel-1"
+          break;
+          case "2 Estrellas":
+          icono = "hotel-2"
+          break;
+          case "3 Estrellas":
+          icono = "hotel-3"
+          break;
+          case "4 Estrellas":
+          icono = "hotel-4"
+          break;
+        case "5 Estrellas":
+          icono = "hotel-5"
+          break;
+        default:
+          icono = "residencia"
+      };
       cadena.push({
         type: 'Feature', properties:
         {
-          Name: "<style> #hotel_popup {background-color: white; width: auto; height: 250px; overflow: auto; }</style>" +
+          Hotel: "<style> #hotel_popup {background-color: white; width: auto; height: 250px; overflow: auto; } ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #f1f1f1;} ::-webkit-scrollbar-thumb {background: #193b68; } ::-webkit-scrollbar-thumb:hover { background: #3893e6; }</style>" +
             "<div id='hotel_popup'>" +
             "<p>Nombre: </strong>" + "</p>" +
             "<p><strong>" + element.nombre + "</strong></p>" +
             "<p>Categoría: " + "<strong>" + element.categoria + "</strong>" + "</p>" +
+            "<p style='color:#3893e6;'><strong>VALOR MENSUAL GASTADOS EN:</strong></p>" +
             "<p>Preparados conservas de pescado y de otras especies acuáticas</p>" +
             "<p><strong>$" + element.preparados_conservas_de_pescado_y_de_otras_especies_acuaticas + "</strong></p>" +
             "<p>Pescado y otros productos acuaticos elaborados</p>" +
@@ -132,7 +153,8 @@ export class MapaComponent implements OnInit {
             "<p><strong>$" + element.cacao_elaborado_chocolate_y_productos_de_confiteria + "</strong></p>" +
             "<p>Productos de café elaborado</p>" +
             "<p><strong>$" + element.productos_de_cafe_elaborado + "</strong></p>"
-            + "</div>"
+            + "</div>",
+          icon: icono
         }, geometry: { type: 'Point', coordinates: [element.longitud, element.latitud] }
       });
     });
@@ -143,6 +165,42 @@ export class MapaComponent implements OnInit {
     };
 
     map.on('load', function () {
+      map.loadImage(
+        '../../assets/hotel_icon/1 Estrella.png',
+        function (error, image) {
+          if (error) throw error;
+          map.addImage('hotel-1', image);
+        });
+        map.loadImage(
+          '../../assets/hotel_icon/2 Estrellas.png',
+          function (error, image) {
+            if (error) throw error;
+            map.addImage('hotel-2', image);
+          });
+        map.loadImage(
+          '../../assets/hotel_icon/3 Estrellas.png',
+          function (error, image) {
+            if (error) throw error;
+            map.addImage('hotel-3', image);
+          });
+        map.loadImage(
+          '../../assets/hotel_icon/4 Estrellas.png',
+          function (error, image) {
+            if (error) throw error;
+            map.addImage('hotel-4', image);
+          });
+        map.loadImage(
+          '../../assets/hotel_icon/5 Estrellas.png',
+          function (error, image) {
+            if (error) throw error;
+            map.addImage('hotel-5', image);
+          });
+          map.loadImage(
+            '../../assets/hotel_icon/residencia.png',
+            function (error, image) {
+              if (error) throw error;
+              map.addImage('residencia', image);
+            });
       map.addLayer({
         id: 'hoteles',
         type: 'symbol',
@@ -151,8 +209,9 @@ export class MapaComponent implements OnInit {
           data: hoteles
         },
         layout: {
-          'icon-image': 'suitcase-11',
-          'icon-allow-overlap': true
+          'icon-image': '{icon}',
+          'icon-allow-overlap': true,
+          'icon-size': 0.1
         },
         paint: {
         }
@@ -169,7 +228,7 @@ export class MapaComponent implements OnInit {
       var feature = features[0];
 
       popup.setLngLat(feature.geometry.coordinates)
-        .setHTML(feature.properties.Name)
+        .setHTML(feature.properties.Hotel)
         .addTo(map);
       map.getCanvas().style.cursor = features.length ? 'pointer' : '';
     });
