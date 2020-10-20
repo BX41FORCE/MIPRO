@@ -106,7 +106,9 @@ export class MapaComponent implements OnInit {
         type: 'Feature', properties:
         {
           Name: "<style> #hotel_popup {background-color: white; width: auto; height: 250px; overflow: auto; }</style>" +
-            "<div id='hotel_popup'>" + "<strong>" + element.nombre + "</strong>" +
+            "<div id='hotel_popup'>" +
+            "<p>Nombre: </strong>" + "</p>" +
+            "<p><strong>" + element.nombre + "</strong></p>" +
             "<p>Categoría: " + "<strong>" + element.categoria + "</strong>" + "</p>" +
             "<p>Preparados conservas de pescado y de otras especies acuáticas</p>" +
             "<p><strong>$" + element.preparados_conservas_de_pescado_y_de_otras_especies_acuaticas + "</strong></p>" +
@@ -115,7 +117,7 @@ export class MapaComponent implements OnInit {
             "<p>Carne productos de carne subproductos</p>" +
             "<p><strong>$" + element.carne_productos_de_carne_subproductos + "</strong></p>" +
             "<p>Tuberculos vegetales y frutas</p>" +
-            "<p><strong>$" + element.tuberculos_vegetales_melones_y_frutas + "</strong></p>"+
+            "<p><strong>$" + element.tuberculos_vegetales_melones_y_frutas + "</strong></p>" +
             "<p>Productos de panaderia</p>" +
             "<p><strong>$" + element.productos_de_panaderia + "</strong></p>" +
             "<p>Bebidas alcoholicas</p>" +
@@ -123,12 +125,12 @@ export class MapaComponent implements OnInit {
             "<p>Flores y capullos</p>" +
             "<p><strong>$" + element.flores_y_capullos + "</strong></p>" +
             "<p>Fideos macarrones y otros productos farinaceos similares</p>" +
-            "<p><strong>$" + element.fideos_macarrones_y_otros_productos_farinaceos_similares + "</strong></p>"+
-            "<p>Productos lacteos elaborados</p>" + 
+            "<p><strong>$" + element.fideos_macarrones_y_otros_productos_farinaceos_similares + "</strong></p>" +
+            "<p>Productos lacteos elaborados</p>" +
             "<p><strong>$" + element.productos_lacteos_elaborados + "</strong></p>" +
-            "<p>Cacao elaborado chocolate y productos de confiteria</p>" + 
+            "<p>Cacao elaborado chocolate y productos de confiteria</p>" +
             "<p><strong>$" + element.cacao_elaborado_chocolate_y_productos_de_confiteria + "</strong></p>" +
-            "<p>Productos de café elaborado</p>" + 
+            "<p>Productos de café elaborado</p>" +
             "<p><strong>$" + element.productos_de_cafe_elaborado + "</strong></p>"
             + "</div>"
         }, geometry: { type: 'Point', coordinates: [element.longitud, element.latitud] }
