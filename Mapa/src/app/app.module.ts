@@ -10,7 +10,9 @@ import { FiltrosComponent } from './filtros/filtros.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { UsuarioService } from './services/usuario.service';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
+import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 
 
 @NgModule({
@@ -25,7 +27,10 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    DropDownListModule,
+    ButtonModule
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent]

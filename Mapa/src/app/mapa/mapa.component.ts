@@ -30,8 +30,8 @@ export class MapaComponent implements OnInit {
       center: [this.lng, this.lat]
     });
     map.addControl(new mapboxgl.NavigationControl());
-    //this.verMercados(map);
-    this.verHoteles(map);
+    this.verMercados(map);
+    //this.verHoteles(map);
   }
 
   verHoteles(map) {
