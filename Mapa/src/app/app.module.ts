@@ -10,8 +10,10 @@ import { FiltrosComponent } from './filtros/filtros.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { UsuarioService } from './services/usuario.service';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
 
+import { SidebarModule } from 'ng-sidebar';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -19,13 +21,15 @@ import { FormsModule } from '@angular/forms';
     MapaComponent,
     NavbarComponent,
     FooterComponent,
-    FiltrosComponent
+    FiltrosComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    SidebarModule.forRoot()
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent]

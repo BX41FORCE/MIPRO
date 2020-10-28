@@ -1,0 +1,69 @@
+<ng-sidebar-container>
+    <ng-sidebar [(opened)]="opened" [mode]="'slide'">
+        <br>
+        <h4 id="nombre_filtro">Filtros</h4>
+        <br>
+        <div>
+            <label id="nombre_filtro" class="black lselect2">Nivel 1:</label>
+        </div>
+        <div class="dropdown" style="margin-left: 15px;">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Seleccionar
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Sector Agroindustrial</button>
+                <button class="dropdown-item" type="button">Sector Textil</button>
+                <button class="dropdown-item" type="button">Eventos de Intercambio Comercial</button>
+            </div>
+        </div>
+        <br>
+        <div>
+            <label id="nombre_filtro" class="black lselect2">Nivel 2:</label>
+        </div>
+        <div class="dropdown" style="margin-left: 15px;">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Seleccionar
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Concentración de Empresas Agroindustriales</button>
+                <button class="dropdown-item" type="button">Sector de Aduanas</button>
+                <button class="dropdown-item" type="button">Empresas Agrícolas</button>
+            </div>
+        </div>
+        <br>
+        <div>
+            <label id="nombre_filtro" class="black lselect2">Nivel 3:</label>
+        </div>
+        <div class="dropdown" style="margin-left: 15px;">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Seleccionar
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Empresas</button>
+                <button class="dropdown-item" type="button">Industrias</button>
+                <button class="dropdown-item" type="button">Microempresas</button>
+            </div>
+        </div>
+        <br>
+        <div>
+            <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"
+                style="margin-left: 50px;"><i class="fas fa-search"></i></a>
+        </div>
+
+    </ng-sidebar>
+
+    <div style="margin-left: 10px; margin-right: 165px; height: 30px;" ng-sidebar-content>
+        <p></p>
+        <header class="demo-header">
+            <button (click)="toggleOpened()" class="btn btn-outline-primary"><i class="fas fa-bars"></i></button>
+            <label><abbr title=""></abbr></label>
+            <label style="margin-left: 5px;">
+                <h2> Mapa de Inteligencia Productiva</h2>
+            </label>
+        </header>
+        <app-mapa></app-mapa>
+    </div>
+</ng-sidebar-container>

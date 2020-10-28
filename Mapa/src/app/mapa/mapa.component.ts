@@ -45,6 +45,7 @@ export class MapaComponent implements OnInit {
       antialias: true
     });
     map.addControl(new mapboxgl.NavigationControl());
+    map.addControl(new mapboxgl.FullscreenControl());
     this.hotelService.getAllHoteles().then(respuesta => {
       this.hoteles = respuesta;
       console.log(this.hoteles);
