@@ -23,18 +23,28 @@ export class MapaComponent implements OnInit {
   }
   ngOnInit(): any {
     (mapboxgl as any).accessToken = environment.mapbox.accessToken;
-    var map = new mapboxgl.Map({
+    /*var map = new mapboxgl.Map({
       container: 'map',
       style: this.style,
       zoom: 5.71,
       center: [this.lng, this.lat]
     });
-    map.addControl(new mapboxgl.NavigationControl());
-    //this.verMercados(map);
-    this.verHoteles(map);
+    map.addControl(new mapboxgl.NavigationControl());*/
+    //this.verMercados();
+    this.verHoteles();
   }
 
-  verHoteles(map) {
+  verHoteles() {
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: this.style,
+      zoom: 10.25,
+      center: [-78.5352221, -0.3073795],
+      pitch: 90,
+      bearing: 0,
+      antialias: true
+    });
+    map.addControl(new mapboxgl.NavigationControl());
     this.hotelService.getAllHoteles().then(respuesta => {
       this.hoteles = respuesta;
       console.log(this.hoteles);
@@ -44,7 +54,14 @@ export class MapaComponent implements OnInit {
     });
   }
 
-  verMercados(map) {
+  verMercados() {
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: this.style,
+      zoom: 5.71,
+      center: [this.lng, this.lat]
+    });
+    map.addControl(new mapboxgl.NavigationControl());
     this.mercadoService.getAllMercados().then(respuesta => {
       this.mercados = respuesta;
       this.cargarMercadosEnMapa(map, this.mercados);
@@ -130,7 +147,7 @@ export class MapaComponent implements OnInit {
             "<p>Nombre: </strong>" + "</p>" +
             "<p><strong>" + element.nombre + "</strong></p>" +
             "<p>Categoría:</p>" +
-            "<p><strong>" + element.categoria + "</strong></p>"+
+            "<p><strong>" + element.categoria + "</strong></p>" +
             "<p style='color:#3893e6;'><strong>VALOR MENSUAL GASTADOS EN:</strong></p>" +
             "<p>Preparados conservas de pescado y de otras especies acuáticas</p>" +
             "<p><strong>$ " + element.preparados_conservas_de_pescado_y_de_otras_especies_acuaticas + "</strong></p>" +
