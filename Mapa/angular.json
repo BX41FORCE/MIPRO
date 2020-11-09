@@ -27,7 +27,8 @@
               "src/styles.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js"
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/app/sidebar/selectFilter.min.js"
             ]
           },
           "configurations": {
@@ -92,7 +93,10 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/app/sidebar/selectFilter.min.js"
+            ]
           }
         },
         "lint": {

@@ -1,0 +1,82 @@
+<ng-sidebar-container>
+    <ng-sidebar [(opened)]="opened" [mode]="'slide'">
+        <br>
+        <h4 id="nombre_filtro">Filtros</h4>
+        <br>
+        <!--
+        <div class="container">
+            <label>Nivel 1:</label>
+                <select data-target="secondList" class="firstList selectFilter">
+                    <option value="-1">Seleccionar</option>
+                    <option data-ref="1">Sector Agroindustrial</option>
+                    <option data-ref="2">Sector Textil</option>
+                    <option data-ref="3">Eventos de Intercambio</option>
+                </select>
+            <label>Nivel 2:</label>
+                <select data-target="thirdList" class="secondList selectFilter">
+                    <option value="-1">Seleccionar</option>
+                    <option data-ref="100" data-belong="1">Comercializadoras</option>
+                    <option data-ref="101" data-belong="1">Concentración de empresas agro pesca y silvicultura</option>
+                    <option data-ref="102" data-belong="1">Concentración de empresas agroindustriales </option>
+                    <option data-ref="103" data-belong="1">Distribución productores pecuarios y actividades relacionadas</option>
+                    <option data-ref="104" data-belong="2">Comercializadoras</option>
+                    <option data-ref="105" data-belong="3">Próximos Eventos</option>
+                    <option data-ref="106" data-belong="3">Boletín 10 de junio</option>
+                </select>
+            <label>Nivel 3:</label>
+                <select class="thirdList selectFilter">
+                    <option value="-1">Seleccionar</option>
+                    <option data-belong="100">Mercados Municipales IUO</option>
+                    <option data-belong="100">Cadenas de Supermercados y Minimarkets</option>
+                    <option data-belong="100">Demanda de Productos (Alojamientos)</option>
+                    <option data-belong="100">Restaurantes</option>
+                    <option data-belong="100">Bares</option>
+                    <option data-belong="100">Tiendas y Supermercados Minoristas</option>
+                    <option data-belong="104">Comercializadoras</option>
+                    <option data-belong="104">Comercializadoras</option>
+                </select>
+        </div>-->
+
+        <div class="container">
+            <div class="row">
+             
+            <div class="form-group">
+            <label class="control-label" for="Nivel 1">Nivel 1:</label>
+            <select *ngIf="getPrimerNivel()" [(ngModel)]="seleccionNivel1" (change)="onSelectNivel1($event.target.value)" class="form-control input-lg" id="nivel1"
+            >
+            <option value="0">Seleccionar</option>
+            <option *ngFor="let nivel1 of getPrimerNivel()" value= {{nivel1.id}}>{{nivel1.name}}</option>
+            </select>
+            </div>
+             
+            <div class="form-group">
+            <label class="control-label" for="Nivel 2">Nivel 2:</label>
+            <select *ngIf="opcionesNivel2" [(ngModel)]="seleccionNivel2" (change)="onSelectNivel2($event.target.value)" class="form-control input-lg" id="nivel2">
+            <option value="0">Seleccionar</option>
+            <option *ngFor="let nivel2 of opcionesNivel2" value= {{nivel2.id}}>{{nivel2.name}}</option>
+            </select>
+            </div>
+             
+            <div class="form-group">
+            <label class="control-label" for="Nivel 3">Nivel 3:</label>
+            <select class="form-control input-lg" id="nivel3">
+            <option *ngIf="!seleccionNivel2" value="0">Seleccionar</option>
+            <option *ngFor="let nivel3 of opcionesNivel3" value= {{nivel3.id}}>{{nivel3.name}}</option>
+            </select>
+            </div>
+            </div>
+            </div>
+         </ng-sidebar>
+
+    <div style="margin-left: 10px; margin-right: 165px; height: 30px;" ng-sidebar-content>
+        <p></p>
+        <header class="demo-header">
+            <button (click)="toggleOpened()" class="btn btn-outline-primary"><i class="fas fa-bars"></i></button>
+            <label><abbr title=""></abbr></label>
+            <label style="margin-left: 5px;">
+                <h2> Mapa de Inteligencia Productiva</h2>
+            </label>
+        </header>
+        <app-mapa></app-mapa>
+    </div>
+</ng-sidebar-container>

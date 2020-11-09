@@ -1,31 +1,32 @@
 #map {
-    float: right;
     width: 100%;
-    height: 584px;
+    height: 524px;
 }
 
 .calculation-box {
-    height: 100px;
+    height: 98%;
     width: 150px;
     position: absolute;
-    bottom: 40px;
-    left: 10px;
-    background-color: rgba(255, 255, 255, 0.9);
+    top: 5px;
+    margin-bottom: 5px;
+    right: 5px;
+    background-color: #193b68;
+    color: white;
     padding: 15px;
     text-align: left;
 }
 
 .calculation-box p {
-    font-family: 'Open Sans';
+    font-family: 'Poppins', sans-serif;
     margin: 0;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 #filtro-map {
     height: 200px;
     width: 170px;
     position: absolute;
-    top: 6px;
+    top: 75px;
     left: 6px;
     background-color: rgb(255, 255, 255);
     padding: 15px;
@@ -34,9 +35,20 @@
 }
 
 #filtro-map p {
-    font-family:  Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     font-size: 11px;
+}
+
+#filtro-map-boton {
+    height: 64px;
+    width: 170px;
+    position: absolute;
+    top: 10px;
+    left: 6px;
+    background-color: #193b68;
+    padding: 15px;
+    text-align: left;
 }
 
 ::-webkit-scrollbar {

@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    height: 94vh;
+}
+
+.ng-sidebar {
+    background-color: #193b68;
+    font-family: 'Poppins', sans-serif;
+    width: 13%;
+    color: #ffffff;
+}

@@ -12,8 +12,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { UsuarioService } from './services/usuario.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
-import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 
+
+
+import { SidebarModule } from 'ng-sidebar';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,8 @@ import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
     MapaComponent,
     NavbarComponent,
     FooterComponent,
-    FiltrosComponent
+    FiltrosComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,7 @@ import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
     FormsModule,
     ReactiveFormsModule,
     DropDownListModule,
-    ButtonModule
+    SidebarModule.forRoot()
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent]
