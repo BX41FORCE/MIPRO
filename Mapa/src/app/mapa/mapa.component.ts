@@ -6,6 +6,9 @@ import { Mercados } from '../models/mercado';
 import { MercadoService } from '../services/mercado.service';
 import { HotelService } from '../services/hotel.service';
 
+import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
+import { Label } from 'ng2-charts';
+
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.component.html',
@@ -19,6 +22,24 @@ export class MapaComponent implements OnInit {
   mercados = [];
   hoteles = [];
   subfiltro = 1;
+
+  public barChartOptions: ChartOptions = {
+    responsive: true,
+  };
+  public barChartLabels: Label[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  public barChartType: ChartType = 'horizontalBar';
+  public barChartLegend = true;
+  public barChartPlugins = [];
+
+  public barChartData: ChartDataSets[] = [
+    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
+    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
+    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series C' },
+    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series D' },
+    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series E' },
+    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series F' }
+  ];
+
   constructor(private json: UsuarioService, private mercadoService: MercadoService, private hotelService: HotelService) {
 
   }

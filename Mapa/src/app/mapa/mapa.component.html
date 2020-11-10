@@ -22,4 +22,14 @@
     <!--<li *ngFor="let mercado of mercados">{{mercado.id_mercado}}) {{mercado.nombre}}</li>-->
     <p>{{ mercados.length }}</p>
     <div id="calculated-area"></div>
+    <div style="display: block;">
+        <canvas baseChart height="650"
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+        </canvas>
+      </div>
 </div>

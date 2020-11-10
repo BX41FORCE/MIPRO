@@ -1,17 +1,17 @@
 #map {
-    width: 100%;
+    width: 90%;
     height: 524px;
 }
 
 .calculation-box {
     height: 98%;
-    width: 155px;
+    width: 270px;
     position: absolute;
     top: 5px;
     margin-bottom: 5px;
     right: 5px;
-    background-color: #193b68;
-    color: white;
+    background-color: #193b6817;
+    color: rgb(0, 0, 0);
     padding: 15px;
     text-align: left;
 }
