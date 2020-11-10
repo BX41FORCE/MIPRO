@@ -18,6 +18,7 @@ export class MapaComponent implements OnInit {
   lng = -79.666;
   mercados = [];
   hoteles = [];
+  subfiltro = 1;
   constructor(private json: UsuarioService, private mercadoService: MercadoService, private hotelService: HotelService) {
 
   }
@@ -34,7 +35,7 @@ export class MapaComponent implements OnInit {
     this.verHoteles();
   }
 
-   verHoteles() {
+  verHoteles() {
     var map = new mapboxgl.Map({
       container: 'map',
       style: this.style,
@@ -48,12 +49,20 @@ export class MapaComponent implements OnInit {
     map.addControl(new mapboxgl.FullscreenControl());
     this.hotelService.getAllHoteles().then(respuesta => {
       this.hoteles = respuesta;
-      console.log(this.hoteles);
       this.cargarHotelesEnMapa(map, this.hoteles);
     }).catch(error => {
       console.log('Aun no hay datos!', 'Oops algo ha salido mal!');
     });
   }
+
+  subFiltroFuncion(value) {
+    if (value == '1' && this.subfiltro == 1) {
+      this.subfiltro = 2;
+    } else if (value == '1' && this.subfiltro == 2) {
+      this.subfiltro = 1;
+    }
+  }
+
 
   verMercados() {
     var map = new mapboxgl.Map({

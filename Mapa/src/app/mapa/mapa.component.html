@@ -1,21 +1,21 @@
 <div id="map">
     <div id="filtro-map-boton" class="section1 text-center">
-        <p><a class="btn btn-primary btn-sm" href="#" id="show"><i class="fa fa-eye"></i> Mostrar</a></p>
+        <a style="float: left; margin-top: -10px; margin-left: -10px;" class="btn btn-outline-primary btn-sm" href="#" id="show"><i class="fa fa-eye"></i> Filtrar Datos</a>
     </div>
-        <div id="filtro-map" style="display: none;">
-            <div id="close" class="section1 text-right">
-                    <a class="btn btn-danger btn-sm" href="#" id="hide" title="Cerrar"><i class="fas fa-window-close"></i></a>
-            </div>
-                <br>
-                <label><input type="checkbox" id="filtro" checked> Demanda MENSUAL</label>
-                    <p>CATEGORÍA HOTEL</p>
-                    <p><img src="../../assets/hotel_icon/residencia.png" width="23" height="23">RESIDENCIA</p>
-                    <p><img src="../../assets/hotel_icon/1 Estrella.png" width="23" height="23"> 1 ESTRELLA</p>
-                    <p><img src="../../assets/hotel_icon/2 Estrellas.png" width="23" height="23"> 2 ESTRELLAS</p>
-                    <p><img src="../../assets/hotel_icon/3 Estrellas.png" width="23" height="23"> 3 ESTRELLAS</p>
-                    <p><img src="../../assets/hotel_icon/4 Estrellas.png" width="23" height="23"> 4 ESTRELLAS</p>
-                    <p><img src="../../assets/hotel_icon/5 Estrellas.png" width="23" height="23"> 5 ESTRELLAS</p>
-        </div>
+    <div id="filtro-map" style="display: block;">
+        <button type="button" class="close" href="#" id="hide" title="Cerrar" aria-label="Close"
+            style="float: right; margin-right: -10px; margin-top: -15px;">
+            <span aria-hidden="true">&times;</span></button>
+    <label><input type="checkbox" id="filtro" checked (change)="subFiltroFuncion([1])"> Demanda MENSUAL</label>
+        
+    <p>CATEGORÍA HOTEL</p>
+        <p><img src="../../assets/hotel_icon/residencia.png" width="23" height="23">RESIDENCIA</p>
+        <p><img src="../../assets/hotel_icon/1 Estrella.png" width="23" height="23"> 1 ESTRELLA</p>
+        <p><img src="../../assets/hotel_icon/2 Estrellas.png" width="23" height="23"> 2 ESTRELLAS</p>
+        <p><img src="../../assets/hotel_icon/3 Estrellas.png" width="23" height="23"> 3 ESTRELLAS</p>
+        <p><img src="../../assets/hotel_icon/4 Estrellas.png" width="23" height="23"> 4 ESTRELLAS</p>
+        <p><img src="../../assets/hotel_icon/5 Estrellas.png" width="23" height="23"> 5 ESTRELLAS</p>
+    </div>
 </div>
 <div class="calculation-box">
     <p>Mercados en Mapa:</p>

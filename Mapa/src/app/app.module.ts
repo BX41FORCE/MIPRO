@@ -6,12 +6,11 @@ import { AppComponent } from './app.component';
 import { MapaComponent } from './mapa/mapa.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { FiltrosComponent } from './filtros/filtros.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { UsuarioService } from './services/usuario.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
-import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
+//import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 
 
 
@@ -24,7 +23,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     MapaComponent,
     NavbarComponent,
     FooterComponent,
-    FiltrosComponent,
     SidebarComponent
   ],
   imports: [
@@ -33,7 +31,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    DropDownListModule,
+   // DropDownListModule,
     SidebarModule.forRoot()
   ],
   providers: [UsuarioService],

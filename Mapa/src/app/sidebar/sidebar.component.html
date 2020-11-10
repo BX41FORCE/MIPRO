@@ -39,34 +39,35 @@
 
         <div class="container">
             <div class="row">
-             
-            <div class="form-group">
-            <label class="control-label" for="Nivel 1">Nivel 1:</label>
-            <select *ngIf="getPrimerNivel()" [(ngModel)]="seleccionNivel1" (change)="onSelectNivel1($event.target.value)" class="form-control input-lg" id="nivel1"
-            >
-            <option value="0">Seleccionar</option>
-            <option *ngFor="let nivel1 of getPrimerNivel()" value= {{nivel1.id}}>{{nivel1.name}}</option>
-            </select>
+
+                <div class="form-group" style="margin-left: 5px; margin-right: 5px;">
+                    <label class="control-label" for="Nivel 1">Nivel 1:</label>
+                    <select *ngIf="getPrimerNivel()" [(ngModel)]="seleccionNivel1"
+                        (change)="onSelectNivel1($event.target.value)" class="form-control input-lg" id="nivel1">
+                        <option value="0">Seleccionar</option>
+                        <option *ngFor="let nivel1 of getPrimerNivel()" value={{nivel1.id}}>{{nivel1.name}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="margin-left: 5px; margin-right: 5px;">
+                    <label class="control-label" for="Nivel 2">Nivel 2:</label>
+                    <select *ngIf="opcionesNivel2" [(ngModel)]="seleccionNivel2"
+                        (change)="onSelectNivel2($event.target.value)" class="form-control input-lg" id="nivel2">
+                        <option value="0">Seleccionar</option>
+                        <option *ngFor="let nivel2 of opcionesNivel2" value={{nivel2.id}}>{{nivel2.name}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="margin-left: 5px; margin-right: 5px;">
+                    <label class="control-label" for="Nivel 3">Nivel 3:</label>
+                    <select class="form-control input-lg" id="nivel3">
+                        <option *ngIf="!seleccionNivel2" value="0">Seleccionar</option>
+                        <option *ngFor="let nivel3 of opcionesNivel3" value={{nivel3.id}}>{{nivel3.name}}</option>
+                    </select>
+                </div>
             </div>
-             
-            <div class="form-group">
-            <label class="control-label" for="Nivel 2">Nivel 2:</label>
-            <select *ngIf="opcionesNivel2" [(ngModel)]="seleccionNivel2" (change)="onSelectNivel2($event.target.value)" class="form-control input-lg" id="nivel2">
-            <option value="0">Seleccionar</option>
-            <option *ngFor="let nivel2 of opcionesNivel2" value= {{nivel2.id}}>{{nivel2.name}}</option>
-            </select>
-            </div>
-             
-            <div class="form-group">
-            <label class="control-label" for="Nivel 3">Nivel 3:</label>
-            <select class="form-control input-lg" id="nivel3">
-            <option *ngIf="!seleccionNivel2" value="0">Seleccionar</option>
-            <option *ngFor="let nivel3 of opcionesNivel3" value= {{nivel3.id}}>{{nivel3.name}}</option>
-            </select>
-            </div>
-            </div>
-            </div>
-         </ng-sidebar>
+        </div>
+    </ng-sidebar>
 
     <div style="margin-left: 10px; margin-right: 165px; height: 30px;" ng-sidebar-content>
         <p></p>

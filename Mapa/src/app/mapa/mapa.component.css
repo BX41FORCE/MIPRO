@@ -5,7 +5,7 @@
 
 .calculation-box {
     height: 98%;
-    width: 150px;
+    width: 155px;
     position: absolute;
     top: 5px;
     margin-bottom: 5px;
@@ -26,7 +26,7 @@
     height: 200px;
     width: 170px;
     position: absolute;
-    top: 75px;
+    top: 49px;
     left: 6px;
     background-color: rgb(255, 255, 255);
     padding: 15px;
@@ -41,14 +41,13 @@
 }
 
 #filtro-map-boton {
-    height: 64px;
+    height: 40px;
     width: 170px;
     position: absolute;
     top: 10px;
     left: 6px;
-    background-color: #193b68;
+    background-color: #ffffff;
     padding: 15px;
-    text-align: left;
 }
 
 ::-webkit-scrollbar {
