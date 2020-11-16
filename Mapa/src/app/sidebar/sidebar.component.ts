@@ -114,16 +114,16 @@ export class SidebarComponent implements OnInit {
       this.seleccionNivel2 == 0;
       this.seleccionNivel3 == 0;
     }
-   // obtenerObjeto() {
-     // if( this.seleccionNivel1 == 1 && this.seleccionNivel2 == 1){
-      //  this.hola.verHoteles();
-      //  alert("xd prro")
-      //}
-      //else {
-      //  this.hola.verMercados();
-       // alert("nel prro")
-     // }
-    //}
+    /*obtenerObjeto() {
+      if( this.seleccionNivel1 == 1 && this.seleccionNivel2 == 1){
+        this.hola.verHoteles();
+        alert("xd prro")
+      }
+      else {
+        this.hola.verMercados();
+        alert("nel prro")
+      }
+    }*/
 
    
 }

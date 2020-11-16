@@ -21,23 +21,30 @@ export class MapaComponent implements OnInit {
   lng = -79.666;
   mercados = [];
   hoteles = [];
+  hotelesTotal = 0;
   subfiltro = 1;
+  calculoBarchart1 = 0;
+  calculoBarchart2 = 0;
+  calculoBarchart3 = 0;
+  calculoBarchart4 = 0;
+  calculoBarchart5 = 0;
+  calculoBarchart6 = 0;
+  calculoBarchart7 = 0;
+  calculoBarchart8 = 0;
+  calculoBarchart9 = 0;
+  calculoBarchart10 = 0;
+  calculoBarchart11 = 0;
+  datosBarchart = [];
 
   public barChartOptions: ChartOptions = {
     responsive: true,
   };
-  public barChartLabels: Label[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  public barChartLabels: Label[] = ['2020',];
   public barChartType: ChartType = 'horizontalBar';
   public barChartLegend = true;
   public barChartPlugins = [];
 
   public barChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series C' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series D' },
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series E' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series F' }
   ];
 
   constructor(private json: UsuarioService, private mercadoService: MercadoService, private hotelService: HotelService) {
@@ -51,9 +58,51 @@ export class MapaComponent implements OnInit {
       zoom: 5.71,
       center: [this.lng, this.lat]
     });
-    map.addControl(new mapboxgl.NavigationControl());*/
+    map.addControl(new mapboxgl.NavigationControl());
+    map.addControl(new mapboxgl.FullscreenControl());*/
     //this.verMercados();
-    //this.verHoteles();
+    this.verHoteles();
+    this.test();
+  }
+  test() {
+    this.hotelService.getAllHoteles().then(respuesta => {
+      this.hoteles = respuesta;
+      respuesta.forEach(element => {
+        if (element.longitud != "" && element.latitud != "") {
+          this.calculoBarchart1 = parseInt(element.preparados_conservas_de_pescado_y_de_otras_especies_acuaticas) + this.calculoBarchart1;
+          this.calculoBarchart2 = parseInt(element.pescado_y_otros_productos_acuaticos_elaborados) + this.calculoBarchart2;
+          this.calculoBarchart3 = parseInt(element.carne_productos_de_carne_subproductos) + this.calculoBarchart3;
+          this.calculoBarchart4 = parseInt(element.tuberculos_vegetales_melones_y_frutas) + this.calculoBarchart4;
+          this.calculoBarchart5 = parseInt(element.productos_de_panaderia) + this.calculoBarchart5;
+          this.calculoBarchart6 = parseInt(element.bebidas_alcoholicas) + this.calculoBarchart6;
+          this.calculoBarchart7 = parseInt(element.flores_y_capullos) + this.calculoBarchart7;
+          this.calculoBarchart8 = parseInt(element.fideos_macarrones_y_otros_productos_farinaceos_similares) + this.calculoBarchart8;
+          this.calculoBarchart9 = parseInt(element.productos_lacteos_elaborados) + this.calculoBarchart9;
+          this.calculoBarchart10 = parseInt(element.cacao_elaborado_chocolate_y_productos_de_confiteria) + this.calculoBarchart10;
+          this.calculoBarchart11 = parseInt(element.productos_de_cafe_elaborado) + this.calculoBarchart11;
+          this.hotelesTotal = 1 + this.hotelesTotal;
+        }
+      })
+      this.test2(this.calculoBarchart1,
+        this.calculoBarchart2, this.calculoBarchart3, this.calculoBarchart4, this.calculoBarchart5,
+        this.calculoBarchart6, this.calculoBarchart7, this.calculoBarchart8, this.calculoBarchart9,
+        this.calculoBarchart10, this.calculoBarchart11);
+    })
+  }
+
+  test2(value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11) {
+    this.datosBarchart = [{ data: [value1,], label: 'Derivados Acuáticos' },
+    { data: [value2], label: 'Pescado y Elaborados' },
+    { data: [value3], label: 'Carne y Subproductos' },
+    { data: [value4], label: 'Vegetales y Frutas' },
+    { data: [value5], label: 'Panadería y Derivados' },
+    { data: [value6], label: 'Bebidas Alcohólicas' },
+    { data: [value7], label: 'Flores y Capullos' },
+    { data: [value8], label: 'Fideos y Similares' },
+    { data: [value9], label: 'Lácteos Elaborados' },
+    { data: [value10], label: 'Cacao y Confitería' },
+    { data: [value11], label: 'Elaborados de Café' },]
+    this.barChartData = this.datosBarchart;
   }
 
   verHoteles() {
