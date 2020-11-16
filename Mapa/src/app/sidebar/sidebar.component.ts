@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, HostListener  } from '@angular/core';
 import { MapaComponent } from '../mapa/mapa.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,35 +9,10 @@ import { MapaComponent } from '../mapa/mapa.component';
 })
 export class SidebarComponent implements OnInit {
 
-  @Input() consultar: MapaComponent;
-
-  @HostListener('obtenerObjeto')
-  obtenerObjeto() {
-    if( this.seleccionNivel1 == 1 && this.seleccionNivel2 == 1 && this.seleccionNivel3 == 1){
-     // this.consultar.verMercados();
-      this.seleccionNivel1 = 0;
-      this.seleccionNivel2 = 0;
-      this.seleccionNivel3 = 0;
-      alert("ok Mercados")
-    }
-    else if (this.seleccionNivel1 == 1 && this.seleccionNivel2 == 1 && this.seleccionNivel3 == 3) {
-      //this.consultar.verHoteles();
-      this.seleccionNivel1 = 0;
-      this.seleccionNivel2 = 0;
-      this.seleccionNivel3 = 0;
-      alert("ok Hoteles")
-    }
-    else {
-      alert("No Disponible en Beta")
-    }
-  }
-
   opened: boolean = true;
   
   
-  constructor(
-    
-  ) { }
+  constructor(private router:Router) { }
   ngOnInit(): void {
   }
 
@@ -109,21 +85,25 @@ export class SidebarComponent implements OnInit {
     ]
     }
     
-    limpiarNiveles(){
-      this.seleccionNivel1 == 0;
-      this.seleccionNivel2 == 0;
-      this.seleccionNivel3 == 0;
-    }
-    /*obtenerObjeto() {
-      if( this.seleccionNivel1 == 1 && this.seleccionNivel2 == 1){
-        this.hola.verHoteles();
-        alert("xd prro")
+    obtenerObjeto() {
+      if( this.seleccionNivel1 == 1 && this.seleccionNivel2 == 1 && this.seleccionNivel3 == 1){
+        this.router.navigate(['mapaMercado']);
+        this.seleccionNivel1 = 0;
+        this.seleccionNivel2 = 0;
+        this.seleccionNivel3 = 0;
+      }
+      else if (this.seleccionNivel1 == 1 && this.seleccionNivel2 == 1 && this.seleccionNivel3 == 3) {
+        this.router.navigate(['mapaHotel']);
+        this.seleccionNivel1 = 0;
+        this.seleccionNivel2 = 0;
+        this.seleccionNivel3 = 0;
+      }
+    else if (this.seleccionNivel1 == 0 && this.seleccionNivel2 == 0 && this.seleccionNivel3 == 0) {
+      this.router.navigate(['']);
+        
       }
       else {
-        this.hola.verMercados();
-        alert("nel prro")
+        alert("No Disponible en Beta")
       }
-    }*/
-
-   
+    }   
 }
