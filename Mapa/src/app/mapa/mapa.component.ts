@@ -53,7 +53,7 @@ export class MapaComponent implements OnInit {
     });
     map.addControl(new mapboxgl.NavigationControl());*/
     //this.verMercados();
-    this.verHoteles();
+    //this.verHoteles();
   }
 
   verHoteles() {
@@ -79,8 +79,12 @@ export class MapaComponent implements OnInit {
   subFiltroFuncion(value) {
     if (value == '1' && this.subfiltro == 1) {
       this.subfiltro = 2;
+      this.verMercados();
+      console.log("desactivado");
     } else if (value == '1' && this.subfiltro == 2) {
       this.subfiltro = 1;
+      this.verHoteles();
+      console.log("activado");
     }
   }
 

@@ -1,4 +1,7 @@
 <app-navbar></app-navbar>
 <router-outlet></router-outlet>
 <!--<app-filtros></app-filtros><app-mapa></app-mapa>-->
-<app-sidebar></app-sidebar>
+<!--<app-mapa #hola></app-mapa>
+<app-sidebar [hola]="hola"></app-sidebar>-->
+<app-sidebar [consultar]="consultar"><app-mapa #consultar></app-mapa></app-sidebar>
+
