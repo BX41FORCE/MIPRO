@@ -13,14 +13,14 @@ export class SidebarComponent implements OnInit {
   @HostListener('obtenerObjeto')
   obtenerObjeto() {
     if( this.seleccionNivel1 == 1 && this.seleccionNivel2 == 1 && this.seleccionNivel3 == 1){
-      this.consultar.verMercados();
+     // this.consultar.verMercados();
       this.seleccionNivel1 = 0;
       this.seleccionNivel2 = 0;
       this.seleccionNivel3 = 0;
       alert("ok Mercados")
     }
     else if (this.seleccionNivel1 == 1 && this.seleccionNivel2 == 1 && this.seleccionNivel3 == 3) {
-      this.consultar.verHoteles();
+      //this.consultar.verHoteles();
       this.seleccionNivel1 = 0;
       this.seleccionNivel2 = 0;
       this.seleccionNivel3 = 0;

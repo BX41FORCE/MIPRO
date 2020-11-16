@@ -19,8 +19,9 @@
 </div>
 <div class="calculation-box">
     <p>Mercados en Mapa:</p>
-    <li *ngFor="let mercado of mercados">{{mercado.id_mercado}}) {{mercado.nombre}}</li>
-    <p>{{ mercados.length }}</p>
+    <p style="text-align: center; color:  #3893e6;">{{ mercados.length }}</p>
+    <hr/>
+    <p style="font-size: 15px;" *ngFor="let mercado of mercados">{{mercado.id_mercado}}) {{mercado.nombre}}<br/></p>
     <!--<p>Hoteles en Mapa:</p>
     <p style="text-align: center; color:  #3893e6;">{{ hotelesTotal}}</p>
     <div id="calculated-area"></div>

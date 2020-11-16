@@ -31,6 +31,7 @@ export class MapaMercadoComponent implements OnInit {
       center: [this.lng, this.lat]
     });
     map.addControl(new mapboxgl.NavigationControl());
+    map.addControl(new mapboxgl.FullscreenControl());
     this.mercadoService.getAllMercados().then(respuesta => {
       this.mercados = respuesta;
       this.cargarMercadosEnMapa(map, this.mercados);
