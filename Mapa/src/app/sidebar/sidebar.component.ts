@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, HostListener  } from '@angular/core';
+import { MapaComponent } from '../mapa/mapa.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,17 +8,47 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
+  @Input() consultar: MapaComponent;
+
+  @HostListener('obtenerObjeto')
+  obtenerObjeto() {
+    if( this.seleccionNivel1 == 1 && this.seleccionNivel2 == 1 && this.seleccionNivel3 == 1){
+      this.consultar.verMercados();
+      this.seleccionNivel1 = 0;
+      this.seleccionNivel2 = 0;
+      this.seleccionNivel3 = 0;
+      alert("ok Mercados")
+    }
+    else if (this.seleccionNivel1 == 1 && this.seleccionNivel2 == 1 && this.seleccionNivel3 == 3) {
+      this.consultar.verHoteles();
+      this.seleccionNivel1 = 0;
+      this.seleccionNivel2 = 0;
+      this.seleccionNivel3 = 0;
+      alert("ok Hoteles")
+    }
+    else {
+      alert("No Disponible en Beta")
+    }
+  }
+
   opened: boolean = true;
-  constructor() { }
+  
+  
+  constructor(
+    
+  ) { }
   ngOnInit(): void {
   }
 
   toggleOpened(): void {
     this.opened = !this.opened;
   }
+  
+  mostrarhoteles: boolean;
 
   seleccionNivel1 = 0;
   seleccionNivel2 = 0;
+  seleccionNivel3 = 0;
 
   opcionesNivel2 = [];
   opcionesNivel3 = [];
@@ -26,6 +57,7 @@ export class SidebarComponent implements OnInit {
   onSelectNivel1(primerNivel_id: number) {
     this.seleccionNivel1 = primerNivel_id;
     this.seleccionNivel2 = 0;
+    this.seleccionNivel3 = 0;
     this.opcionesNivel3 = [];
     this.opcionesNivel2 = this.getSegundoNivel().filter((item) => {
     return item.primerNivel_id === Number(primerNivel_id)
@@ -34,9 +66,14 @@ export class SidebarComponent implements OnInit {
      
     onSelectNivel2(segundoNivel_id: number) {
     this.seleccionNivel2 = segundoNivel_id;
+    this.seleccionNivel3 = 0;
     this.opcionesNivel3 = this.getTercerNivel().filter((item) => {
     return item.segundoNivel_id === Number(segundoNivel_id)
     });
+    }
+
+  onSelectNivel3(id: number){
+    this.seleccionNivel3 = id;
     }
      
     getPrimerNivel() {
@@ -72,4 +109,21 @@ export class SidebarComponent implements OnInit {
     ]
     }
     
+    limpiarNiveles(){
+      this.seleccionNivel1 == 0;
+      this.seleccionNivel2 == 0;
+      this.seleccionNivel3 == 0;
+    }
+    /*obtenerObjeto() {
+      if( this.seleccionNivel1 == 1 && this.seleccionNivel2 == 1){
+        this.hola.verHoteles();
+        alert("xd prro")
+      }
+      else {
+        this.hola.verMercados();
+        alert("nel prro")
+      }
+    }*/
+
+   
 }

@@ -17,6 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidebarModule } from 'ng-sidebar';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ChartsModule } from 'ng2-charts';
+import { MapaHotelComponent } from './mapa-hotel/mapa-hotel.component';
+import { MapaMercadoComponent } from './mapa-mercado/mapa-mercado.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { ChartsModule } from 'ng2-charts';
     MapaComponent,
     NavbarComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    MapaHotelComponent,
+    MapaMercadoComponent
   ],
   imports: [
     BrowserModule,

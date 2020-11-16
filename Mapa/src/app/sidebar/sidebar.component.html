@@ -60,11 +60,13 @@
 
                 <div class="form-group" style="margin-left: 5px; margin-right: 5px;">
                     <label class="control-label" for="Nivel 3">Nivel 3:</label>
-                    <select class="form-control input-lg" id="nivel3">
-                        <option *ngIf="!seleccionNivel2" value="0">Seleccionar</option>
+                    <select *ngIf="opcionesNivel3" [(ngModel)]="seleccionNivel3" 
+                    (change)="onSelectNivel3($event.target.value)" class="form-control input-lg"   id="nivel3">
+                        <option value="0">Seleccionar</option>
                         <option *ngFor="let nivel3 of opcionesNivel3" value={{nivel3.id}}>{{nivel3.name}}</option>
                     </select>
                 </div>
+                <button style="margin-left: 5px; margin-right: 5px;" class="btn btn-primary btn-block" (click)="obtenerObjeto()"><i class="fas fa-search"></i> Consultar</button>
             </div>
         </div>
     </ng-sidebar>
@@ -78,6 +80,6 @@
                 <h2> Mapa de Inteligencia Productiva</h2>
             </label>
         </header>
-        <app-mapa></app-mapa>
+        <router-outlet></router-outlet>
     </div>
 </ng-sidebar-container>
