@@ -31,6 +31,7 @@ export class MapaHotelComponent implements OnInit {
   calculoBarchart10 = 0;
   calculoBarchart11 = 0;
   datosBarchart = [];
+  mostrar = false;
 
   public barChartOptions: ChartOptions = {
     responsive: true,
