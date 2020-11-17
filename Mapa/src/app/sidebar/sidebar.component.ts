@@ -103,7 +103,7 @@ export class SidebarComponent implements OnInit {
         
       }
       else {
-        alert("No Disponible en Beta")
+        alert("Data no disponible")
       }
     }   
 }
