@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '../../environments/environment';
 import * as mapboxgl from 'mapbox-gl';
 import { MercadoService } from '../services/mercado.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class MapaMercadoComponent implements OnInit {
   lng = -78.4718792;
   mercados = [];
 
-  constructor(private mercadoService: MercadoService) {
+  constructor(private mercadoService: MercadoService, private toastr: ToastrService) {
 
   }
   ngOnInit(): any {
@@ -36,7 +37,8 @@ export class MapaMercadoComponent implements OnInit {
       this.mercados = respuesta;
       this.cargarMercadosEnMapa(map, this.mercados);
     }).catch(error => {
-      console.log('Aun no hay datos!', 'Oops algo ha salido mal!');
+      this.toastr.error('Data No Encontrada', 'Oops algo ha salido mal!');
+      alert('Oops algo ha salido mal!\nData No Encontrada');
     });
   }
 

@@ -5,6 +5,7 @@ import { HotelService } from '../services/hotel.service';
 
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-mapa-hotel',
@@ -31,7 +32,7 @@ export class MapaHotelComponent implements OnInit {
   calculoBarchart10 = 0;
   calculoBarchart11 = 0;
   datosBarchart = [];
-  mostrar = false;
+  mostrar = true;
 
   public barChartOptions: ChartOptions = {
     responsive: true,
@@ -44,24 +45,11 @@ export class MapaHotelComponent implements OnInit {
   public barChartData: ChartDataSets[] = [
   ];
 
-  constructor(private hotelService: HotelService) {
+  constructor(private hotelService: HotelService, private toastr: ToastrService) {
 
   }
   ngOnInit(): any {
     (mapboxgl as any).accessToken = environment.mapbox.accessToken;
-    /*var map = new mapboxgl.Map({
-      container: 'map',
-      style: this.style,
-      zoom: 5.71,
-      center: [this.lng, this.lat]
-    });
-    map.addControl(new mapboxgl.NavigationControl());
-    map.addControl(new mapboxgl.FullscreenControl());*/
-    /*map.on('load', function () {
-      var mapDiv = document.getElementById('map');
-      mapDiv.innerHTML = "";
-    });*/
-    //this.verMercados();
     this.verHoteles();
   }
   chartHotel() {
@@ -122,7 +110,7 @@ export class MapaHotelComponent implements OnInit {
       this.hoteles = respuesta;
       this.cargarHotelesEnMapa(map, this.hoteles);
     }).catch(error => {
-      console.log('Aun no hay datos!', 'Oops algo ha salido mal!');
+      this.toastr.error('Data No Encontrada', 'Oops algo ha salido mal!');
     });
   }
 
@@ -237,6 +225,10 @@ export class MapaHotelComponent implements OnInit {
           if (error) throw error;
           map.addImage('residencia', image);
         });
+      map.addSource('hoteles', {
+        type: 'geojson',
+        url: 'mapbox://mapbox.2opop9hr'
+      });
       map.addLayer({
         id: 'hoteles',
         type: 'symbol',
@@ -245,14 +237,17 @@ export class MapaHotelComponent implements OnInit {
           data: hoteles
         },
         layout: {
+          'visibility': 'visible',
           'icon-image': '{icon}',
           'icon-allow-overlap': true,
           'icon-size': 0.1
         },
         paint: {
-        }
+        },
       });
     });
+
+
     var popup = new mapboxgl.Popup();
 
     map.on('click', function (e) {
@@ -268,6 +263,38 @@ export class MapaHotelComponent implements OnInit {
         .addTo(map);
       map.getCanvas().style.cursor = features.length ? 'pointer' : '';
     });
+
+
+
+    var toggleableLayerIds = ['hoteles'];
+    for (var i = 0; i < toggleableLayerIds.length; i++) {
+      var id = toggleableLayerIds[i];
+
+      var link = document.createElement('button');
+      link.textContent = '\uD83C\uDFE8 Ocultar Hoteles';
+      link.className = 'btn btn-outline-primary btn-sm btn-block';
+      link.style.fontSize = "11px";
+      link.style.marginTop = "20px";
+
+      link.onclick = function (e) {
+        var clickedLayer = id;
+        e.preventDefault();
+        e.stopPropagation();
+
+        var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+
+        // toggle layer visibility by changing the layout object's visibility property
+        if (visibility === 'visible') {
+          map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+          layers.className = '';
+        } else {
+          layers.className = 'active';
+          map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+        }
+      };
+      var layers = document.getElementById('sub-filtro');
+      layers.appendChild(link);
+    }
   }
 
 }

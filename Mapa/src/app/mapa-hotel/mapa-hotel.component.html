@@ -1,14 +1,16 @@
 <div id="map">
     <div id="filtro-map-boton" class="section1 text-center">
-        <button style="font-size: 11px; float: right; margin-top: -10px; margin-left: -10px;" class="btn btn-outline-primary btn-sm" id="show" (click)="mostrar=true"><i class="fa fa-eye"></i> Demanda Alojamiento</button>
+        <button style="font-size: 11px; float: right; margin-top: -10px; margin-left: -10px;"
+            class="btn btn-outline-primary btn-sm" id="show" (click)="mostrar=true"><i class="fa fa-eye"></i> Demanda
+            Alojamiento</button>
+            <nav id="sub-filtro"></nav>
     </div>
     <div id="filtro-map" style="display: block;" *ngIf="mostrar">
         <button type="button" class="close" href="#" id="hide" (click)="mostrar=false" title="Cerrar" aria-label="Close"
             style="float: right; margin-right: -10px; margin-top: -15px;">
             <span aria-hidden="true">&times;</span></button>
-    <label><input type="checkbox" id="filtro" checked (change)="subFiltroFuncion([1])"> Demanda MENSUAL</label>
-        
-    <p>CATEGORÍA HOTEL</p>
+        <!--<label><input type="checkbox" id="filtro" checked (change)="subFiltroFuncion([1])"> Demanda MENSUAL</label>-->
+        <p>CATEGORÍA HOTEL</p>
         <p><img src="../../assets/hotel_icon/residencia.png" width="23" height="23">RESIDENCIA</p>
         <p><img src="../../assets/hotel_icon/1 Estrella.png" width="23" height="23"> 1 ESTRELLA</p>
         <p><img src="../../assets/hotel_icon/2 Estrellas.png" width="23" height="23"> 2 ESTRELLAS</p>
@@ -19,16 +21,12 @@
 </div>
 <div class="calculation-box">
     <p style=" font-size: 23px;">Hoteles en Mapa: {{ hotelesTotal}}</p>
-    <a class="btn btn-outline-primary btn-sm btn-block" href="../../assets/doc/Alojamientos Demanda UIO Final.xlsx"><i class="fas fa-file-excel"></i>&nbsp;<i class="fas fa-table"></i> Ver Data</a> 
+    <a class="btn btn-outline-primary btn-sm btn-block" href="../../assets/doc/Alojamientos Demanda UIO Final.xlsx"><i
+            class="fas fa-file-excel"></i>&nbsp;<i class="fas fa-table"></i> Ver Data</a>
     <div id="calculated-area"></div>
     <div style="display: block;">
-        <canvas baseChart height="620"
-          [datasets]="barChartData"
-          [labels]="barChartLabels"
-          [options]="barChartOptions"
-          [plugins]="barChartPlugins"
-          [legend]="barChartLegend"
-          [chartType]="barChartType">
+        <canvas baseChart height="620" [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+            [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
         </canvas>
-      </div>
+    </div>
 </div>

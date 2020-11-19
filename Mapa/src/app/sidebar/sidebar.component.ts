@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, HostListener  } from '@angular/core';
 import { MapaComponent } from '../mapa/mapa.component';
 import {Router} from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,7 +13,7 @@ export class SidebarComponent implements OnInit {
   opened: boolean = true;
   
   
-  constructor(private router:Router) { }
+  constructor(private router:Router, private toastr: ToastrService) { }
   ngOnInit(): void {
   }
 
@@ -103,7 +104,7 @@ export class SidebarComponent implements OnInit {
         
       }
       else {
-        alert("Data no disponible")
+        this.toastr.warning('', 'Data no disponible');
       }
     }   
 }

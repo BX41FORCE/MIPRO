@@ -19,6 +19,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ChartsModule } from 'ng2-charts';
 import { MapaHotelComponent } from './mapa-hotel/mapa-hotel.component';
 import { MapaMercadoComponent } from './mapa-mercado/mapa-mercado.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MapaMercadoComponent } from './mapa-mercado/mapa-mercado.component';
     FormsModule,
     ReactiveFormsModule,
     ChartsModule,
-    SidebarModule.forRoot()
+    SidebarModule.forRoot(),
+    ToastrModule.forRoot(),
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent]
