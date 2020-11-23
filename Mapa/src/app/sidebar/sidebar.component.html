@@ -3,39 +3,6 @@
         <br>
         <h4 id="nombre_filtro">Filtros</h4>
         <br>
-        <!--
-        <div class="container">
-            <label>Nivel 1:</label>
-                <select data-target="secondList" class="firstList selectFilter">
-                    <option value="-1">Seleccionar</option>
-                    <option data-ref="1">Sector Agroindustrial</option>
-                    <option data-ref="2">Sector Textil</option>
-                    <option data-ref="3">Eventos de Intercambio</option>
-                </select>
-            <label>Nivel 2:</label>
-                <select data-target="thirdList" class="secondList selectFilter">
-                    <option value="-1">Seleccionar</option>
-                    <option data-ref="100" data-belong="1">Comercializadoras</option>
-                    <option data-ref="101" data-belong="1">Concentración de empresas agro pesca y silvicultura</option>
-                    <option data-ref="102" data-belong="1">Concentración de empresas agroindustriales </option>
-                    <option data-ref="103" data-belong="1">Distribución productores pecuarios y actividades relacionadas</option>
-                    <option data-ref="104" data-belong="2">Comercializadoras</option>
-                    <option data-ref="105" data-belong="3">Próximos Eventos</option>
-                    <option data-ref="106" data-belong="3">Boletín 10 de junio</option>
-                </select>
-            <label>Nivel 3:</label>
-                <select class="thirdList selectFilter">
-                    <option value="-1">Seleccionar</option>
-                    <option data-belong="100">Mercados Municipales IUO</option>
-                    <option data-belong="100">Cadenas de Supermercados y Minimarkets</option>
-                    <option data-belong="100">Demanda de Productos (Alojamientos)</option>
-                    <option data-belong="100">Restaurantes</option>
-                    <option data-belong="100">Bares</option>
-                    <option data-belong="100">Tiendas y Supermercados Minoristas</option>
-                    <option data-belong="104">Comercializadoras</option>
-                    <option data-belong="104">Comercializadoras</option>
-                </select>
-        </div>-->
 
         <div class="container">
             <div class="row">
@@ -43,9 +10,11 @@
                 <div class="form-group" style="margin-left: 5px; margin-right: 5px;">
                     <label class="control-label" for="Nivel 1">Nivel 1:</label>
                     <select *ngIf="getPrimerNivel()" [(ngModel)]="seleccionNivel1"
-                        (change)="onSelectNivel1($event.target.value)" class="form-control input-lg" id="nivel1">
+                        (click)="onSelectNivel1($event.target.value)" class="form-control input-lg" id="nivel1">
                         <option value="0">Seleccionar</option>
-                        <option *ngFor="let nivel1 of getPrimerNivel()" value={{nivel1.id}}>{{nivel1.name}}</option>
+                        <option value="1">Sector Agroindustrial</option>
+                        <option value="2">Sector Textil</option>
+                        <option value="3">Eventos de Intercambio</option>
                     </select>
                 </div>
 

@@ -36,6 +36,7 @@ export class MapaMercadoComponent implements OnInit {
     this.mercadoService.getAllMercados().then(respuesta => {
       this.mercados = respuesta;
       this.cargarMercadosEnMapa(map, this.mercados);
+      this.toastr.success('', 'Consulta Exitosa');
     }).catch(error => {
       this.toastr.error('Data No Encontrada', 'Oops algo ha salido mal!');
       alert('Oops algo ha salido mal!\nData No Encontrada');

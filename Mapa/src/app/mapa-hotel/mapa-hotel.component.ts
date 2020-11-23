@@ -109,6 +109,7 @@ export class MapaHotelComponent implements OnInit {
     this.hotelService.getAllHoteles().then(respuesta => {
       this.hoteles = respuesta;
       this.cargarHotelesEnMapa(map, this.hoteles);
+      this.toastr.success('', 'Consulta Exitosa');
     }).catch(error => {
       this.toastr.error('Data No Encontrada', 'Oops algo ha salido mal!');
     });
