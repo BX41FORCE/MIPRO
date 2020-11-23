@@ -1,4 +1,5 @@
 const Pool = require('pg').Pool
+//Creación de función de conexión con la base de datos en PostgreSQL
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',

@@ -1,5 +1,9 @@
+//Uso de la conexión a la base.
 const pool = require ('../database/db');
 
+//Funciones con Querys para consulas a la base.
+
+//Función para Consultar todos los datos de la tabla de mercados.
 const getMercados = (request, response) => {
     pool.query('SELECT * FROM mercados ORDER BY id_mercado ASC', (error, results) => {
         if (error) {
@@ -8,6 +12,7 @@ const getMercados = (request, response) => {
         response.status(200).json(results.rows)
     })
 }
+//Función para Consultar un dato según el ID de la tabla Mercados.
 const getMercadoById = (request, response) => {
     const id = parseInt(request.params.id)
 
@@ -18,6 +23,7 @@ const getMercadoById = (request, response) => {
         response.status(200).json(results.rows)
     })
 }
+//Función para Insertar un nuevo mercado en la base de datos.
 const createMercado = (request, response) => {
     const { nombre, longitud, latitud } = request.body
 
@@ -28,6 +34,7 @@ const createMercado = (request, response) => {
         response.status(201).send(`Mercado ingresado con ID: ${result.insertId}`)
     })
 }
+//Función para Actualizar un mercado en la base.
 const updateMercado = (request, response) => {
     const id = parseInt(request.params.id)
     const { nombre,longitud,latitud } = request.body
@@ -43,6 +50,7 @@ const updateMercado = (request, response) => {
         }
     )
 }
+//Función para Eliminar un mercado de la base.
 const deleteMercado = (request, response) => {
     const id = parseInt(request.params.id)
 
@@ -53,6 +61,7 @@ const deleteMercado = (request, response) => {
         response.status(200).send(`Mercado eliminado con ID: ${id}`)
     })
 }
+//Exportamos las funciones para su uso en otro archivo
 module.exports = {
     getMercados,
     getMercadoById,

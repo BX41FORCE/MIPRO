@@ -1,10 +1,15 @@
+
+<!--Espacio para presentación del mapa-->
 <div id="map">
+    <!--Sub-Filtro presentado en el mapa-->
+    <!--Botones del Sub filtro-->
     <div id="filtro-map-boton" class="section1 text-center">
         <button style="font-size: 11px; float: right; margin-top: -10px; margin-left: -10px;"
             class="btn btn-outline-primary btn-sm" id="show" (click)="mostrar=true"><i class="fa fa-eye"></i> Demanda
             Alojamiento</button>
             <nav id="sub-filtro"></nav>
     </div>
+    <!--Información desplegada en el Sub-Filtro-->
     <div id="filtro-map" style="display: block;" *ngIf="mostrar">
         <button type="button" class="close" href="#" id="hide" (click)="mostrar=false" title="Cerrar" aria-label="Close"
             style="float: right; margin-right: -10px; margin-top: -15px;">
@@ -19,11 +24,16 @@
         <p><img src="../../assets/hotel_icon/5 Estrellas.png" width="23" height="23"> 5 ESTRELLAS</p>
     </div>
 </div>
+
+<!--Espacio para la presentación de datos-->
 <div class="calculation-box">
+    <!--Información de hotles desplegados-->
     <p style=" font-size: 23px;">Hoteles en Mapa: {{ hotelesTotal}}</p>
+    <!--Boton de Descarga de Data-->
     <a class="btn btn-outline-primary btn-sm btn-block" href="../../assets/doc/Alojamientos Demanda UIO Final.xlsx"><i
             class="fas fa-file-excel"></i>&nbsp;<i class="fas fa-table"></i> Ver Data</a>
     <div id="calculated-area"></div>
+    <!--Gráfico estadístico-->
     <div style="display: block;">
         <canvas baseChart height="620" [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
             [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">

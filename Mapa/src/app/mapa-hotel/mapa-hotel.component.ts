@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../environments/environment';
 import * as mapboxgl from 'mapbox-gl';
+
+//Importación del Servicio de Hoteles.
 import { HotelService } from '../services/hotel.service';
 
+//Importación de Módulos para los gráficos estadísticos. 
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
+
+//Importación del módulo para las alertas
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -13,10 +18,13 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./mapa-hotel.component.css']
 })
 export class MapaHotelComponent implements OnInit {
+  //Uso de mapbox
   map: mapboxgl.Map;
+
+  //Uso de un estilo específico creado en mapbox.
   style = 'mapbox://styles/bx41force/ck7m2bd88j2341iqho0jblnpz';
-  lat = -1.720;
-  lng = -79.666;
+
+  //Variables globales para su uso en funciones.
   hoteles = [];
   hotelesTotal = 0;
   subfiltro = 1;
@@ -33,7 +41,7 @@ export class MapaHotelComponent implements OnInit {
   calculoBarchart11 = 0;
   datosBarchart = [];
   mostrar = true;
-
+  //Generación de gráfico estadístico
   public barChartOptions: ChartOptions = {
     responsive: true,
   };
@@ -49,9 +57,64 @@ export class MapaHotelComponent implements OnInit {
 
   }
   ngOnInit(): any {
+
+    //Uso del token para el generar el mapa.
     (mapboxgl as any).accessToken = environment.mapbox.accessToken;
+
+    //Ejecución de Función Principal
     this.verHoteles();
   }
+
+  //Función principal
+
+  verHoteles() {
+
+    //Ejecución de función del gráfico estadístico
+    this.chartHotel();
+
+    //Generación del mapa
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: this.style,
+      zoom: 10.25,
+      center: [-78.5352221, -0.4073795],
+      pitch: 90,
+      bearing: 0,
+      antialias: true
+    });
+    map.addControl(new mapboxgl.NavigationControl());
+    map.addControl(new mapboxgl.FullscreenControl());
+
+    //Uso del servicio para traer los datos.
+    this.hotelService.getAllHoteles().then(respuesta => {
+      this.hoteles = respuesta;
+
+      //Ejecución de función secundaria
+      this.cargarHotelesEnMapa(map, this.hoteles);
+
+      //Alerta
+      this.toastr.success('', 'Consulta Exitosa');
+
+    }).catch(error => {
+
+      //Alerta en caso de Error
+      this.toastr.error('Data No Encontrada', 'Oops algo ha salido mal!');
+
+    });
+  }
+  //Función de control de check box
+  /*
+    subFiltroFuncion(value) {
+      if (value == '1' && this.subfiltro == 1) {
+        this.subfiltro = 2;
+      } else if (value == '1' && this.subfiltro == 2) {
+        this.subfiltro = 1;
+      }
+    }*/
+
+  //Funciones para presentación de datos en el gráfico estadístico.
+
+  //Función de cálculo para presentación de los datos.
   chartHotel() {
     this.hotelService.getAllHoteles().then(respuesta => {
       this.hoteles = respuesta;
@@ -71,13 +134,17 @@ export class MapaHotelComponent implements OnInit {
           this.hotelesTotal = 1 + this.hotelesTotal;
         }
       })
+
+      //Ejecución de función para presentación de los datos
       this.chart(this.calculoBarchart1,
         this.calculoBarchart2, this.calculoBarchart3, this.calculoBarchart4, this.calculoBarchart5,
         this.calculoBarchart6, this.calculoBarchart7, this.calculoBarchart8, this.calculoBarchart9,
         this.calculoBarchart10, this.calculoBarchart11);
     })
+
   }
 
+  // Función para la presentación de los datos calculados
   chart(value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11) {
     this.datosBarchart = [{ data: [value1,], label: 'Derivados Acuáticos' },
     { data: [value2], label: 'Pescado y Elaborados' },
@@ -93,38 +160,11 @@ export class MapaHotelComponent implements OnInit {
     this.barChartData = this.datosBarchart;
   }
 
-  verHoteles() {
-    this.chartHotel();
-    var map = new mapboxgl.Map({
-      container: 'map',
-      style: this.style,
-      zoom: 10.25,
-      center: [-78.5352221, -0.4073795],
-      pitch: 90,
-      bearing: 0,
-      antialias: true
-    });
-    map.addControl(new mapboxgl.NavigationControl());
-    map.addControl(new mapboxgl.FullscreenControl());
-    this.hotelService.getAllHoteles().then(respuesta => {
-      this.hoteles = respuesta;
-      this.cargarHotelesEnMapa(map, this.hoteles);
-      this.toastr.success('', 'Consulta Exitosa');
-    }).catch(error => {
-      this.toastr.error('Data No Encontrada', 'Oops algo ha salido mal!');
-    });
-  }
-
-  subFiltroFuncion(value) {
-    if (value == '1' && this.subfiltro == 1) {
-      this.subfiltro = 2;
-    } else if (value == '1' && this.subfiltro == 2) {
-      this.subfiltro = 1;
-    }
-  }
-
+  //Función de despliegue de los layers en el mapa
   cargarHotelesEnMapa(map, datos) {
     var cadena = [];
+
+    //Depuración de los datos para ser utilizados.
     datos.forEach(element => {
       var icono = "";
       switch (element.categoria) {
@@ -150,11 +190,11 @@ export class MapaHotelComponent implements OnInit {
         type: 'Feature', properties:
         {
           Hotel: "<style> #hotel_popup {background-color: white; width: auto; height: 250px; overflow: auto; } ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #f1f1f1;} ::-webkit-scrollbar-thumb {background: #193b68; } ::-webkit-scrollbar-thumb:hover { background: #3893e6; }</style>" +
-            "<div id='hotel_popup'>" +
+            "<div id='hotel_popup'>" +"<p></p>"+
             "<p>Nombre: </strong>" + "</p>" +
             "<p><strong>" + element.nombre + "</strong></p>" +
             "<p>Categoría:</p>" +
-            "<p><strong>" + element.categoria + "</strong></p>" +
+            "<p><strong>" + element.categoria + "</strong></p> <hr></hr>" +
             "<p style='color:#3893e6;'><strong>VALOR MENSUAL GASTADOS EN:</strong></p>" +
             "<p>Preparados conservas de pescado y de otras especies acuáticas</p>" +
             "<p><strong>$ " + element.preparados_conservas_de_pescado_y_de_otras_especies_acuaticas + "</strong></p>" +
@@ -183,12 +223,12 @@ export class MapaHotelComponent implements OnInit {
         }, geometry: { type: 'Point', coordinates: [element.longitud, element.latitud] }
       });
     });
-
+    //Uso de los datos depurados
     var hoteles = {
       type: 'FeatureCollection',
       features: [] = cadena
     };
-
+    //Imágenes según la categoría del hotel
     map.on('load', function () {
       map.loadImage(
         '../../assets/hotel_icon/1 Estrella.png',
@@ -230,6 +270,7 @@ export class MapaHotelComponent implements OnInit {
         type: 'geojson',
         url: 'mapbox://mapbox.2opop9hr'
       });
+      //Generación de layer según el dato depurado
       map.addLayer({
         id: 'hoteles',
         type: 'symbol',
@@ -248,7 +289,7 @@ export class MapaHotelComponent implements OnInit {
       });
     });
 
-
+    //Opciones generales del PopUp
     var popup = new mapboxgl.Popup();
 
     map.on('click', function (e) {
@@ -265,12 +306,12 @@ export class MapaHotelComponent implements OnInit {
       map.getCanvas().style.cursor = features.length ? 'pointer' : '';
     });
 
-
-
+    //Función de ocultamiento de los hoteles
     var toggleableLayerIds = ['hoteles'];
     for (var i = 0; i < toggleableLayerIds.length; i++) {
       var id = toggleableLayerIds[i];
 
+      //Generación del botón para ocultamiento de hoteles
       var link = document.createElement('button');
       link.textContent = '\uD83C\uDFE8 Ocultar Hoteles';
       link.className = 'btn btn-outline-primary btn-sm btn-block';
