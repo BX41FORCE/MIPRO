@@ -1,5 +1,7 @@
 import { Component, OnInit,} from '@angular/core';
+//Importación del Sistema de Rutas para navegar entre las diferentes vistas. 
 import { Router } from '@angular/router';
+//Importación de Librería para mostrar notificaciones web. 
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -8,18 +10,18 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-
+//Variable para el funcionamiento del Sidebar.
   opened: boolean = true;
 
 
   constructor(private router: Router, private toastr: ToastrService) { }
   ngOnInit(): void {
   }
-
+//Método para el funcionamiento del Sidebar.
   toggleOpened(): void {
     this.opened = !this.opened;
   }
-
+//Variables globales para su uso en funciones.
   mostrarhoteles: boolean;
 
   seleccionNivel1 = 0;
@@ -29,7 +31,7 @@ export class SidebarComponent implements OnInit {
   opcionesNivel2 = [];
   opcionesNivel3 = [];
 
-
+//Métodos para el funcionamiento de los Niveles en Sidebar.
   onSelectNivel1(primerNivel_id: number) {
     this.seleccionNivel1 = primerNivel_id;
     this.seleccionNivel2 = 0;
@@ -52,6 +54,7 @@ export class SidebarComponent implements OnInit {
     this.seleccionNivel3 = id;
   }
 
+  //Métodos para obtener valores en los Niveles de Sidebar.
   getPrimerNivel() {
     return [
       { id: 1, name: 'Sector Agroindustrial' },
@@ -85,24 +88,31 @@ export class SidebarComponent implements OnInit {
     ]
   }
 
+  //Métodos filtro para comparar y asignar vistas de los Mapas.
   obtenerObjeto() {
     if (this.seleccionNivel1 == 1 && this.seleccionNivel2 == 1 && this.seleccionNivel3 == 1) {
+      //Navegación a la vista de Mercados.
       this.router.navigate(['mapaMercado']);
+      //Refrescar los Niveles en Sidebar.
       this.seleccionNivel1 = 0;
       this.seleccionNivel2 = 0;
       this.seleccionNivel3 = 0;
     }
     else if (this.seleccionNivel1 == 1 && this.seleccionNivel2 == 1 && this.seleccionNivel3 == 3) {
+      //Navegación a la vista de Hoteles
       this.router.navigate(['mapaHotel']);
+      //Refrescar los Niveles en Sidebar.
       this.seleccionNivel1 = 0;
       this.seleccionNivel2 = 0;
       this.seleccionNivel3 = 0;
     }
     else if (this.seleccionNivel1 == 0 && this.seleccionNivel2 == 0 && this.seleccionNivel3 == 0) {
+      //Navegación a la vista de Mapa Principal en caso de no realizar ninguna seleccion en los niveles.
       this.router.navigate(['']);
 
     }
     else {
+      //Alerta
       this.toastr.warning('', 'Data no disponible');
     }
   }
