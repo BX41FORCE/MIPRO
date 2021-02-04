@@ -1,12 +1,13 @@
+<!--Espacio para mostrar el Sidebar-->
 <ng-sidebar-container>
     <ng-sidebar [(opened)]="opened" [mode]="'slide'">
         <br>
         <h4 id="nombre_filtro">Filtros</h4>
         <br>
-
+        <!--Listas de los Niveles Sidebar -->
         <div class="container">
             <div class="row">
-
+                <!--Lista del Nivel 1 Sidebar -->
                 <div class="form-group" style="margin-left: 5px; margin-right: 5px;">
                     <label class="control-label" for="Nivel 1">Nivel 1:</label>
                     <select *ngIf="getPrimerNivel()" [(ngModel)]="seleccionNivel1"
@@ -17,7 +18,7 @@
                         <option value="3">Eventos de Intercambio</option>
                     </select>
                 </div>
-
+                <!--Lista del Nivel 2 Sidebar -->
                 <div class="form-group" style="margin-left: 5px; margin-right: 5px;">
                     <label class="control-label" for="Nivel 2">Nivel 2:</label>
                     <select *ngIf="opcionesNivel2" [(ngModel)]="seleccionNivel2"
@@ -26,7 +27,7 @@
                         <option *ngFor="let nivel2 of opcionesNivel2" value={{nivel2.id}}>{{nivel2.name}}</option>
                     </select>
                 </div>
-
+                <!--Lista del Nivel 3 Sidebar -->
                 <div class="form-group" style="margin-left: 5px; margin-right: 5px;">
                     <label class="control-label" for="Nivel 3">Nivel 3:</label>
                     <select *ngIf="opcionesNivel3" [(ngModel)]="seleccionNivel3" 
@@ -35,6 +36,7 @@
                         <option *ngFor="let nivel3 of opcionesNivel3" value={{nivel3.id}}>{{nivel3.name}}</option>
                     </select>
                 </div>
+                <!--Botón para consultar y navegar entre vistas-->
                 <button style="margin-left: 5px; margin-right: 5px;" class="btn btn-primary btn-block" (click)="obtenerObjeto()"><i class="fas fa-search"></i> Consultar</button>
             </div>
         </div>
@@ -43,7 +45,9 @@
     <div style="margin-left: 10px; margin-right: 165px; height: 30px;" ng-sidebar-content>
         <p></p>
         <header class="demo-header">
+            <!--Botón para mostrar/ocultar Sidebar-->
             <button (click)="toggleOpened()" class="btn btn-outline-primary"><i class="fas fa-bars"></i></button>
+            <!--Título Página Principal-->
             <label><abbr title=""></abbr></label>
             <label style="margin-left: 5px;">
                 <h2> Mapa de Inteligencia Productiva</h2>
