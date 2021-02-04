@@ -5,7 +5,7 @@ const pool = require('../database/db');
 
 //Función para Consultar todos los datos de la tabla de hoteles.
 const getHoteles = (request, response) => {
-    pool.query('SELECT * FROM hoteles ORDER BY id_hotel ASC', (error, results) => {
+    pool.query('SELECT * FROM ec_mipro_mapas.hoteles ORDER BY id_hotel ASC', (error, results) => {
         if (error) {
             throw error
         }
@@ -16,7 +16,7 @@ const getHoteles = (request, response) => {
 const getHotelById = (request, response) => {
     const id = parseInt(request.params.id)
 
-    pool.query('SELECT * FROM hoteles WHERE id_hotel = $1', [id], (error, results) => {
+    pool.query('SELECT * FROM ec_mipro_mapas.hoteles WHERE id_hotel = $1', [id], (error, results) => {
         if (error) {
             throw error
         }
@@ -27,7 +27,7 @@ const getHotelById = (request, response) => {
 const createHotel = (request, response) => {
     const { nombre, longitud,latitud, provincia, canton, parroquia, registro, fecha_apertura, actividad, clasificacion, categoria, tipo_organizacion, referencia, direccion, telefono, celular, email, web, estado, origen, hombres, mujeres, discapacitados, total_empleados, habitaciones, camas, dato, plazas_camas, mesas, plazas_mesas, vehiculo, admin_zonal, sector_turistico, zona_turistica, preparados_conservas_de_pescado_y_de_otras_especies_acuaticas, pescado_y_otros_productos_acuaticos_elaborados, carne_productos_de_carne_subproductos, tuberculos_vegetales_melones_y_frutas, productos_de_panaderia, bebidas_alcoholicas, flores_y_capullos, fideos_macarrones_y_otros_productos_farinaceos_similares, productos_lacteos_elaborados, cacao_elaborado_chocolate_y_productos_de_confiteria, productos_de_cafe_elaborado } = request.body
 
-    pool.query('INSERT INTO hoteles (nombre,longitud,latitud,provincia,canton,parroquia,registro,fecha_apertura,actividad,clasificacion,categoria,tipo_organizacion,referencia,direccion,telefono,celular,email,web,estado,origen,hombres,mujeres,discapacitados,total_empleados,habitaciones,camas,dato,plazas_camas,mesas,plazas_mesas,vehiculo,admin_zonal,sector_turistico,zona_turistica,preparados_conservas_de_pescado_y_de_otras_especies_acuaticas,pescado_y_otros_productos_acuaticos_elaborados,carne_productos_de_carne_subproductos,tuberculos_vegetales_melones_y_frutas,productos_de_panaderia,bebidas_alcoholicas,flores_y_capullos,fideos_macarrones_y_otros_productos_farinaceos_similares,productos_lacteos_elaborados,cacao_elaborado_chocolate_y_productos_de_confiteria,productos_de_cafe_elaborado) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34, $35, $36, $37, $38, $39, $40, $41, $42, $43, $44, $45)', [nombre, latitud,longitud, provincia, canton, parroquia, registro, fecha_apertura, actividad, clasificacion, categoria, tipo_organizacion, referencia, direccion, telefono, celular, email, web, estado, origen, hombres, mujeres, discapacitados, total_empleados, habitaciones, camas, dato, plazas_camas, mesas, plazas_mesas, vehiculo, admin_zonal, sector_turistico, zona_turistica, preparados_conservas_de_pescado_y_de_otras_especies_acuaticas, pescado_y_otros_productos_acuaticos_elaborados, carne_productos_de_carne_subproductos, tuberculos_vegetales_melones_y_frutas, productos_de_panaderia, bebidas_alcoholicas, flores_y_capullos, fideos_macarrones_y_otros_productos_farinaceos_similares, productos_lacteos_elaborados, cacao_elaborado_chocolate_y_productos_de_confiteria, productos_de_cafe_elaborado], (error, results) => {
+    pool.query('INSERT INTO ec_mipro_mapas.hoteles (nombre,longitud,latitud,provincia,canton,parroquia,registro,fecha_apertura,actividad,clasificacion,categoria,tipo_organizacion,referencia,direccion,telefono,celular,email,web,estado,origen,hombres,mujeres,discapacitados,total_empleados,habitaciones,camas,dato,plazas_camas,mesas,plazas_mesas,vehiculo,admin_zonal,sector_turistico,zona_turistica,preparados_conservas_de_pescado_y_de_otras_especies_acuaticas,pescado_y_otros_productos_acuaticos_elaborados,carne_productos_de_carne_subproductos,tuberculos_vegetales_melones_y_frutas,productos_de_panaderia,bebidas_alcoholicas,flores_y_capullos,fideos_macarrones_y_otros_productos_farinaceos_similares,productos_lacteos_elaborados,cacao_elaborado_chocolate_y_productos_de_confiteria,productos_de_cafe_elaborado) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34, $35, $36, $37, $38, $39, $40, $41, $42, $43, $44, $45)', [nombre, latitud,longitud, provincia, canton, parroquia, registro, fecha_apertura, actividad, clasificacion, categoria, tipo_organizacion, referencia, direccion, telefono, celular, email, web, estado, origen, hombres, mujeres, discapacitados, total_empleados, habitaciones, camas, dato, plazas_camas, mesas, plazas_mesas, vehiculo, admin_zonal, sector_turistico, zona_turistica, preparados_conservas_de_pescado_y_de_otras_especies_acuaticas, pescado_y_otros_productos_acuaticos_elaborados, carne_productos_de_carne_subproductos, tuberculos_vegetales_melones_y_frutas, productos_de_panaderia, bebidas_alcoholicas, flores_y_capullos, fideos_macarrones_y_otros_productos_farinaceos_similares, productos_lacteos_elaborados, cacao_elaborado_chocolate_y_productos_de_confiteria, productos_de_cafe_elaborado], (error, results) => {
         if (error) {
             throw error
         }
@@ -54,7 +54,7 @@ const updateHotel = (request, response) => {
 const deleteHotel = (request, response) => {
     const id = parseInt(request.params.id)
 
-    pool.query('DELETE FROM hoteles WHERE id_hotel = $1', [id], (error, results) => {
+    pool.query('DELETE FROM ec_mipro_mapas.hoteles WHERE id_hotel = $1', [id], (error, results) => {
         if (error) {
             throw error
         }

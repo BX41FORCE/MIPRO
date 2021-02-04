@@ -1,4 +1,4 @@
-INSERT INTO hoteles
+INSERT INTO ec_mipro_mapas.hoteles
 (nombre,longitud,latitud,provincia,canton,parroquia,registro,fecha_apertura,actividad,clasificacion,categoria,
  tipo_organizacion,referencia,direccion,telefono,celular,email,web,estado,origen,hombres,mujeres,
 discapacitados,total_empleados,habitaciones,camas,dato,plazas_camas,mesas,plazas_mesas,vehiculo,

@@ -1,0 +1,22 @@
+Comandos para la ejecución del servidor
+--Actualización de paquetes node--
+1.- npm update
+--Instalación de paquetes node--
+2.- npm install
+--Inicialización de servidor--
+3.- node index.js
+(¡La ejecución se debe realizar en la ruta de la carpeta del servidor mediante la terminal.!)
+
+Comandos para la ejecución del proyecto Angular
+--Actualización de paquetes node--
+1.- npm update
+--Instalación de paquetes node--
+2.- npm install
+--Inicialización de proyecto Angular--
+3.- ng serve --o
+--Compilación del proyecto Angular--
+4.- ng build --prod --base-href="./"
+
+¡¡Para ejecutar la compilación el proyecto no debe tener ningun error y se debe tener en cuenta que las configuraciones de producción son las que se pondrán en el compilado DIST!!
+
+(¡La ejecución se debe realizar en la ruta de la carpeta de mapa mediante la terminal.!)

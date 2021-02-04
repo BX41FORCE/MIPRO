@@ -5,7 +5,7 @@ const pool = require ('../database/db');
 
 //Función para Consultar todos los datos de la tabla de mercados.
 const getMercados = (request, response) => {
-    pool.query('SELECT * FROM mercados ORDER BY id_mercado ASC', (error, results) => {
+    pool.query('SELECT * FROM ec_mipro_mapas.mercados ORDER BY id_mercado ASC', (error, results) => {
         if (error) {
             throw error
         }
@@ -16,7 +16,7 @@ const getMercados = (request, response) => {
 const getMercadoById = (request, response) => {
     const id = parseInt(request.params.id)
 
-    pool.query('SELECT * FROM mercados WHERE id_mercado = $1', [id], (error, results) => {
+    pool.query('SELECT * FROM ec_mipro_mapas.mercados WHERE id_mercado = $1', [id], (error, results) => {
         if (error) {
             throw error
         }
@@ -27,7 +27,7 @@ const getMercadoById = (request, response) => {
 const createMercado = (request, response) => {
     const { nombre, longitud, latitud } = request.body
 
-    pool.query('INSERT INTO mercados (nombre,longitud,latitud) VALUES ($1, $2, $3)', [nombre,longitud,latitud], (error, results) => {
+    pool.query('INSERT INTO ec_mipro_mapas.mercados (nombre,longitud,latitud) VALUES ($1, $2, $3)', [nombre,longitud,latitud], (error, results) => {
         if (error) {
             throw error
         }
@@ -40,7 +40,7 @@ const updateMercado = (request, response) => {
     const { nombre,longitud,latitud } = request.body
 
     pool.query(
-        'UPDATE mercados SET nombre = $1, longitud = $2,latitud = $3 WHERE id_mercado = $4',
+        'UPDATE ec_mipro_mapas.mercados SET nombre = $1, longitud = $2,latitud = $3 WHERE id_mercado = $4',
         [nombre, longitud,latitud, id],
         (error, results) => {
             if (error) {
@@ -54,7 +54,7 @@ const updateMercado = (request, response) => {
 const deleteMercado = (request, response) => {
     const id = parseInt(request.params.id)
 
-    pool.query('DELETE FROM mercados WHERE id_mercado = $1', [id], (error, results) => {
+    pool.query('DELETE FROM ec_mipro_mapas.mercados WHERE id_mercado = $1', [id], (error, results) => {
         if (error) {
             throw error
         }

@@ -1,4 +1,4 @@
-CREATE TABLE hoteles (
+CREATE TABLE ec_mipro_mapas.hoteles (
 	id_hotel SERIAL NOT NULL,
 	nombre VARCHAR(100),
 	longitud VARCHAR (20),

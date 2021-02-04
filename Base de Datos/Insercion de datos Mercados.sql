@@ -1,4 +1,4 @@
-insert into mercados(nombre, longitud, latitud) values ('Mercado Municipal de La Kennedy','-78.4777946','-0.1393178'),
+insert into ec_mipro_mapas.mercados(nombre, longitud, latitud) values ('Mercado Municipal de La Kennedy','-78.4777946','-0.1393178'),
 ('Mercado Bellavista','-78.4713352','-0.1898899'),
 ('Mercado de Puengasí','-78.4940998','-0.2450032'),
 ('Mercado La Luz','-78.4782704','-0.1482046'),

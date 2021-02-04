@@ -17,7 +17,7 @@ app.use(
 app.use('/api', apiRoute);
 
 app.get('/', (request, response) => {
-    response.json({ info: 'Servidor API rest con Node.js, Express y Postgres' })
+    response.json('Servidor API rest con Node.js, Express y Postgres' )
 })
 
 app.listen(port, () => {
